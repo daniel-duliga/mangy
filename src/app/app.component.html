@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="actions" style="min-width: 320px;">
+    <h1>Mythic</h1>
+    <div>
+      <h3>Chaos factor</h3>
+      <div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
+        <button (click)="changeChaosFactor(-1)">-</button>
+        <div style="text-align: center;"><b>{{chaosFactor}}</b></div>
+        <button (click)="changeChaosFactor(1)">+</button>
+      </div>
+    </div>
+    <div>
+      <h3>Fate Check</h3>
+      <div class="mythic-buttons-container">
+        <div class="favors-container">
+          <div>
+            <input type="radio" name="favors" value="yes" [(ngModel)]="favors" id="favorsYes" checked>
+            <label for="favorsYes">Yes favors</label>
+          </div>
+          <div>
+            <input type="radio" name="favors" value="no" [(ngModel)]="favors" id="favorsNo">
+            <label for="favorsNo">No favors</label>
+          </div>
+        </div>
+        <button (click)="fateCheck()">50/50 or unsure</button>
+        <div class="flex-column">
+          <button (click)="fateCheck(2)">Likely</button>
+          <button (click)="fateCheck(4)">Very likely</button>
+          <button (click)="fateCheck(6)">Sure thing</button>
+          <button (click)="fateCheck(8)">Has to be</button>
+        </div>
+        <div class="flex-column">
+          <button (click)="fateCheck(-2)">Unlikely</button>
+          <button (click)="fateCheck(-4)">Very unlikely</button>
+          <button (click)="fateCheck(-6)">No way</button>
+          <button (click)="fateCheck(-8)">Impossible</button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h3>Detail Check</h3>
+      <div style="display: flex; flex-direction: column;">
+        <button (click)="detailCheck()">Detail Check</button>
+        <div style="display: flex;">
+          <div class="descriptor-action-container">
+            <button (click)="descriptor1()">Descriptor 1</button>
+            <button (click)="descriptor2()">Descriptor 2</button>
+          </div>
+          <div class="descriptor-action-container">
+            <button (click)="action1()">Action 1</button>
+            <button (click)="action2()">Action 2</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1>General</h1>
+    <div>
+      <h3>Dice</h3>
+      <div style="display: grid; grid-template-rows: 1fr 1fr 1fr;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
+          <button (click)="rollDice('1d4')">d4</button>
+          <button (click)="rollDice('1d6')">d6</button>
+          <button (click)="rollDice('1d8')">d8</button>
+          <button (click)="rollDice('1d10')">d10</button>
+          <button (click)="rollDice('1d12')">d12</button>
+          <button (click)="rollDice('1d20')">d20</button>
+          <button (click)="rollDice('1d100')">d100</button>
+        </div>
+        <div style="display: grid; padding-top: 2px;">
+          <input type="text" [(ngModel)]="customDiceFormula" />
+          <button (click)="rollDice(customDiceFormula)">Roll</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="min-width: 320px; display: flex; flex-direction: column; border-left: 1px solid gray; padding: 20px; overflow: auto; width: 100%;">
+    <div style="display: flex; justify-content: end;">
+      <button (click)="clearLog()">Clear</button>
+    </div>
+    <div style="font-size: 11pt;">
+      <div *ngFor="let logEntry of log" [title]="logEntry.hint">
+        <i style="color: gray;">{{logEntry.timestamp | date:'YY-MM-dd HH:mm:ss'}}:</i>
+        {{logEntry.value}}
+      </div>
+    </div>
+  </div>
+</div>
