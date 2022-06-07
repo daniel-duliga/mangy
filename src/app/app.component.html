@@ -1,9 +1,31 @@
 <div class="container">
+  
+  <!-- Log -->
+  <div
+    style="min-width: 320px; display: flex; flex-direction: column; border-right: 1px solid gray; padding: 20px; width: 100%;">
+    <div style="display: flex; justify-content: end;">
+      <button (click)="data.clearLog()">Clear</button>
+    </div>
+    <div style="flex-grow: 1; font-size: 11pt; overflow: auto; margin: 10px 0 10px 0;">
+      <div *ngFor="let logEntry of data.log" [title]="logEntry.hint">
+        <i style="color: gray;">{{logEntry.timestamp | date:'YY-MM-dd HH:mm:ss'}}</i>
+        &nbsp;
+        {{logEntry.value}}
+      </div>
+    </div>
+    <div style="display: flex;">
+      <input (keyup.enter)="addCustomLog()" [(ngModel)]="customLog" style="margin: 2px; flex-grow: 1;" type="text">
+      <button (click)="addCustomLog()">Log</button>
+    </div>
+  </div>
+  
   <!-- Actions -->
   <div class="actions" style="min-width: 320px;">
     <!-- Mythic -->
     <span>
       <h1>Mythic</h1>
+
+      <!-- Chaos factor -->
       <div>
         <h3>Chaos factor</h3>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
@@ -12,6 +34,8 @@
           <button (click)="changeChaosFactor(1)">+</button>
         </div>
       </div>
+      
+      <!-- Fate Check -->
       <div>
         <h3>Fate Check</h3>
         <div class="mythic-buttons-container">
@@ -40,19 +64,27 @@
           </div>
         </div>
       </div>
+      
+      <!-- Detail & Event Checks -->
       <div>
-        <h3>Detail Check</h3>
-        <div style="display: flex; flex-direction: column;">
+        <h3>Detail & Event Checks</h3>
+        <div style="display: grid; grid-template-columns: 1fr 1fr;">
           <button (click)="detailCheck()">Detail Check</button>
-          <div style="display: flex;">
-            <div class="descriptor-action-container">
-              <button (click)="descriptor1()">Descriptor 1</button>
-              <button (click)="descriptor2()">Descriptor 2</button>
-            </div>
-            <div class="descriptor-action-container">
-              <button (click)="action1()">Action 1</button>
-              <button (click)="action2()">Action 2</button>
-            </div>
+          <button>Event Check</button>
+        </div>
+      </div>
+
+      <!-- Meaning Tables -->
+      <div>
+        <h3>Meaning Tables</h3>
+        <div style="display: flex;">
+          <div class="descriptor-action-container">
+            <button (click)="descriptor1()">Descriptor 1</button>
+            <button (click)="descriptor2()">Descriptor 2</button>
+          </div>
+          <div class="descriptor-action-container">
+            <button (click)="action1()">Action 1</button>
+            <button (click)="action2()">Action 2</button>
           </div>
         </div>
       </div>
@@ -82,22 +114,4 @@
     </span>
   </div>
 
-  <!-- Log -->
-  <div
-    style="min-width: 320px; display: flex; flex-direction: column; border-left: 1px solid gray; padding: 20px; width: 100%;">
-    <div style="display: flex; justify-content: end;">
-      <button (click)="data.clearLog()">Clear</button>
-    </div>
-    <div style="flex-grow: 1; font-size: 11pt; overflow: auto; margin: 10px 0 10px 0;">
-      <div *ngFor="let logEntry of data.log" [title]="logEntry.hint">
-        <i style="color: gray;">{{logEntry.timestamp | date:'YY-MM-dd HH:mm:ss'}}</i>
-        &nbsp;
-        {{logEntry.value}}
-      </div>
-    </div>
-    <div style="display: flex;">
-      <input (keyup.enter)="addCustomLog()" [(ngModel)]="customLog" style="margin: 2px; flex-grow: 1;" type="text">
-      <button (click)="addCustomLog()">Log</button>
-    </div>
-  </div>
 </div>

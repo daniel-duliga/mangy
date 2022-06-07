@@ -14,4 +14,17 @@ export class Tables {
     static Action2 = [
         'Goals', 'Dreams', 'Environment', 'Outside', 'Inside', 'Reality', 'Allies', 'Enemies', 'Evil', 'Good', 'Emotions', 'Opposition', 'War', 'Peace', 'Innocent', 'Love', 'Spirit', 'Intellect', 'Ideas', 'Joy', 'Messages', 'Energy', 'Balance', 'Tension', 'Friendship', 'Physical', 'Project', 'Pleasures', 'Pain', 'Possessions', 'Benefits', 'Plans', 'Lies', 'Expectations', 'Legal', 'Bureaucracy', 'Business', 'Path', 'News', 'Exterior', 'Advice', 'Plot', 'Competition', 'Prison', 'Illness', 'Food', 'Attention', 'Success', 'Failure', 'Travel', 'Jealousy', 'Dispute', 'Home', 'Investment', 'Suffering', 'Wishes', 'Tactics', 'Stalemate', 'Randomness', 'Misfortune', 'Death', 'Disruption', 'Power', 'Burden', 'Intrigues', 'Fears', 'Ambush', 'Rumor', 'Wounds', 'Extravagance', 'Representative', 'Adversities', 'Opulence', 'Liberty', 'Military', 'Mundane', 'Trials', 'Masses', 'Vehicle', 'Art', 'Victory', 'Dispute', 'Riches', 'Normal', 'Technology', 'Hope', 'Magic', 'Illusions', 'Portals', 'Danger', 'Weapons', 'Animals', 'Weather', 'Elements', 'Nature', 'Masses', 'Leadership', 'Fame', 'Anger', 'Information'
     ];
+    static EventFocusStandard = [
+        { min: 1, max: 7, value: 'Remote event' },
+        { min: 8, max: 28, value: 'NPC Action' },
+        { min: 29, max: 35, value: 'Introduce a new NPC' },
+        { min: 36, max: 45, value: 'Move toward a thread' },
+        { min: 46, max: 52, value: 'Move away from a thread' },
+        { min: 53, max: 55, value: 'Close a thread' },
+        { min: 56, max: 67, value: 'PC negative' },
+        { min: 68, max: 75, value: 'PC positive' },
+        { min: 76, max: 83, value: 'Ambiguous event' },
+        { min: 84, max: 92, value: 'NPC negative' },
+        { min: 93, max: 100, value: 'NPC positive' },
+    ]
 }
