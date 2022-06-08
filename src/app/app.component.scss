@@ -10,9 +10,11 @@ button, input {
 .container {
     height: calc(100vh - 20px);
     display: flex;
+    
     .actions {
         overflow: auto;
-        padding: 20px;
+        padding: 0 20px 0 20px;
+        
         .mythic-buttons-container {
             display: grid;
             grid-template-columns: 1fr 1fr;

@@ -96,6 +96,22 @@
       </div>
     </span>
 
+    <!-- Lists -->
+    <span>
+      <h2>Lists</h2>
+      
+      <!-- NPCs -->
+      <div style="display: grid; grid-template-rows: 1fr;">
+        <div *ngFor="let list of data.lists" style="display: flex;">
+          <button title="Add to list" (click)="addToList(list.name)">+</button>
+          <button title="Remove from list" (click)="removeFromList(list.name)">-</button>
+          <button (click)="rollList(list.name)" style="flex-grow: 1;">{{ list.name }}</button>
+          <button title="Remove list" (click)="removeList(list.name)">x</button>
+        </div>
+        <button (click)="addList()">+</button>
+      </div>
+    </span>
+
     <!-- General -->
     <span>
       <h2>General</h2>

@@ -1,49 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DiceUtil } from './dice/dice-util';
+import { PersistentData } from './persistent-data/persistent-data';
 import { Tables } from './tables/tables';
-
-class LogEntry {
-  constructor(
-    public value: string,
-    public hint: string,
-    public timestamp: Date = new Date(),
-  ) { }
-}
-
-class PersistentData {
-  private _log: LogEntry[] = [];
-  public get log() : LogEntry[] { 
-    return this._log;
-  }
-  addToLog(value: string, hint: string = '') {
-    this.log.unshift(new LogEntry(value, hint));
-    this.persist();
-  }
-  clearLog() {
-    this._log = [];
-    this.persist();
-  }
-  
-  private _chaosFactor = 4;
-  public get chaosFactor() : number { return this._chaosFactor; }
-  public set chaosFactor(v : number) {
-    this._chaosFactor = v;
-    this.persist();
-  }
-
-  private static key = 'data';
-  private persist() {
-    localStorage.setItem(PersistentData.key, JSON.stringify(this));
-  }
-  public loadFromStorage() {
-    const rawData = localStorage.getItem(PersistentData.key);
-    if (rawData) {
-      const result = JSON.parse(rawData);
-      this._log = result._log;
-      this._chaosFactor = result._chaosFactor;
-    }
-  }
-}
 
 @Component({
   selector: 'app-root',
@@ -205,6 +163,54 @@ export class AppComponent implements OnInit {
   }
   //#endregion
   
+  //#region Lists
+  addList() {
+    const listName = prompt('List name:');
+    if (listName) {
+      this.data.addList(listName);
+    }
+  }
+  removeList(listName: string) {
+    if (confirm(`Are you sure you want to remove List '${listName}'?`)) {
+      this.data.removeList(listName);
+    }
+  }
+  addToList(listName: string) {
+    const value = prompt('Value:');
+    if (value) {
+      this.data.addToList(listName, value);
+    }
+  }
+  removeFromList(listName: string) {
+    const list = this.data.lists.filter(x => x.name === listName)[0];
+    
+    if (list.values.length === 0) {
+      confirm('List is empty!');
+      return;
+    }
+    
+    let message = 'List content:\n\n';
+    for (let index = 0; index < list.values.length; index++) {
+      const value = list.values[index];
+      message = message.concat(`${index + 1}. ${value}\n`);
+    }
+    message = message.concat('\nNumber of entry to delete:');
+    
+    const value = prompt(message);
+    if (value && !isNaN(+value)) {
+      this.data.removeFromList(listName, list.values[+value - 1]);
+    }
+  }
+  rollList(listName: string) {
+    const list = this.data.lists.filter(x => x.name === listName)[0];
+    const dice = DiceUtil.rollDiceFormula(`1d${list.values.length}`);
+    const result = list.values[dice.sum - 1];
+    if (result) {
+      this.data.addToLog(result, `[List Roll: ${listName}] D: ${dice.sum}`);
+    }
+  }
+  //#endregion
+
   //#region General
   rollDice(formula: string) {
     const result = DiceUtil.rollDiceFormula(formula);
