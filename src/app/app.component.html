@@ -23,11 +23,11 @@
   <div class="actions" style="min-width: 320px;">
     <!-- Mythic -->
     <span>
-      <h1>Mythic</h1>
+      <h2>Mythic</h2>
 
       <!-- Chaos factor -->
       <div>
-        <h3>Chaos factor</h3>
+        <p><b><b>Chaos factor</b></b></p>
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr;">
           <button (click)="changeChaosFactor(-1)">-</button>
           <div style="text-align: center;"><b>{{data.chaosFactor}}</b></div>
@@ -37,7 +37,7 @@
       
       <!-- Fate Check -->
       <div>
-        <h3>Fate Check</h3>
+        <p><b>Fate Check</b></p>
         <div class="mythic-buttons-container">
           <div class="favors-container">
             <div>
@@ -67,16 +67,22 @@
       
       <!-- Detail & Event Checks -->
       <div>
-        <h3>Detail & Event Checks</h3>
-        <div style="display: grid; grid-template-columns: 1fr 1fr;">
+        <p><b>Detail & Event Checks</b></p>
+        <div style="display: grid; grid-template-rows: 1fr;">
           <button (click)="detailCheck()">Detail Check</button>
-          <button>Event Check</button>
+          <button (click)="eventCheckStandard()">Event Check: Standard</button>
+          <button (click)="eventCheckHorror()">Event Check: Horror</button>
+          <button (click)="eventCheckActionAdventure()">Event Check: Action Adventure</button>
+          <button (click)="eventCheckMystery()">Event Check: Mystery</button>
+          <button (click)="eventCheckSocial()">Event Check: Social</button>
+          <button (click)="eventCheckPersonal()">Event Check: Personal</button>
+          <button (click)="eventCheckEpic()">Event Check: Epic</button>
         </div>
       </div>
 
       <!-- Meaning Tables -->
       <div>
-        <h3>Meaning Tables</h3>
+        <p><b>Meaning Tables</b></p>
         <div style="display: flex;">
           <div class="descriptor-action-container">
             <button (click)="descriptor1()">Descriptor 1</button>
@@ -92,9 +98,9 @@
 
     <!-- General -->
     <span>
-      <h1>General</h1>
+      <h2>General</h2>
       <div>
-        <h3>Dice</h3>
+        <p><b>Dice</b></p>
         <div style="display: grid; grid-template-rows: 1fr 1fr 1fr;">
           <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;">
             <button (click)="rollDice('1d4')">d4</button>

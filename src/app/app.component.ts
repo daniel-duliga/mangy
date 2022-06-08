@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiceUtil } from './dice/dice-util';
-import { Tables } from './tables';
+import { Tables } from './tables/tables';
 
 class LogEntry {
   constructor(
@@ -82,6 +82,7 @@ export class AppComponent implements OnInit {
       this.data.chaosFactor = 6;
     }
   }
+  
   fateCheck(modifier: number = 0) {
     if (this.data.chaosFactor === 3) {
       if (this.favors === 'yes') {
@@ -122,6 +123,7 @@ export class AppComponent implements OnInit {
     const hint = `[Fate Check] D: ${fateDie1.sum}, ${fateDie2.sum}; MOD: ${modifier}; CD: ${chaosDie.sum}`;
     this.data.addToLog(log, hint);
   }
+  
   detailCheck() {
     const die1 = DiceUtil.rollDiceFormula('1d10');
     const die2 = DiceUtil.rollDiceFormula('1d10');
@@ -141,28 +143,65 @@ export class AppComponent implements OnInit {
     } else if (dieResult >= 18) {
       result = 'Calm';
     } else {
-      result = Tables.DetailCheck[dieResult - 5];
+      result = Tables.DetailCheck.roll(dieResult - 5);
     }
 
-    this.data.addToLog(`${result}`, `[Detail Check] D: ${die1.sum}, ${die2.sum}, MOD: ${modifier}`);
+    this.data.addToLog(result, `[Detail Check] D: ${die1.sum}, ${die2.sum}, MOD: ${modifier}`);
   }
+  
   descriptor1() {
     const die = DiceUtil.rollDiceFormula('1d100');
-    this.data.addToLog(Tables.Descriptor1[die.sum - 1], `[Descriptor 1] D: ${die.details}`);
+    this.data.addToLog(Tables.Descriptor1.roll(die.sum - 1), `[Descriptor 1] D: ${die.details}`);
   }
   descriptor2() {
     const die = DiceUtil.rollDiceFormula('1d100');
-    this.data.addToLog(Tables.Descriptor2[die.sum - 1], `[Descriptor 2] D: ${die.details}`);
+    this.data.addToLog(Tables.Descriptor2.roll(die.sum - 1), `[Descriptor 2] D: ${die.details}`);
     
   }
   action1() {
     const die = DiceUtil.rollDiceFormula('1d100');
-    this.data.addToLog(Tables.Action1[die.sum - 1], `[Action 1] D: ${die.details}`);
+    this.data.addToLog(Tables.Action1.roll(die.sum - 1), `[Action 1] D: ${die.details}`);
 
   }
   action2() {
     const die = DiceUtil.rollDiceFormula('1d100');
-    this.data.addToLog(Tables.Action2[die.sum - 1], `[Action 2] D: ${die.details}`);
+    this.data.addToLog(Tables.Action2.roll(die.sum - 1), `[Action 2] D: ${die.details}`);
+  }
+  
+  eventCheckStandard() {
+    const dice = DiceUtil.rollDiceFormula('1d100');
+    const result = Tables.EventFocusStandard.roll(dice.sum);
+    this.data.addToLog(result, `[Event Check: Standard] D: ${dice.sum}`);
+  }
+  eventCheckHorror() {
+    const dice = DiceUtil.rollDiceFormula('1d100');
+    const result = Tables.EventFocusHorror.roll(dice.sum);
+    this.data.addToLog(result, `[Event Check: Horror] D: ${dice.sum}`);
+  }
+  eventCheckActionAdventure() {
+    const dice = DiceUtil.rollDiceFormula('1d100');
+    const result = Tables.EventFocusActionAdventure.roll(dice.sum);
+    this.data.addToLog(result, `[Event Check: Action Adventure] D: ${dice.sum}`);
+  }
+  eventCheckMystery() {
+    const dice = DiceUtil.rollDiceFormula('1d100');
+    const result = Tables.EventFocusMystery.roll(dice.sum);
+    this.data.addToLog(result, `[Event Check: Mystery] D: ${dice.sum}`);
+  }
+  eventCheckSocial() {
+    const dice = DiceUtil.rollDiceFormula('1d100');
+    const result = Tables.EventFocusSocial.roll(dice.sum);
+    this.data.addToLog(result, `[Event Check: Social] D: ${dice.sum}`);
+  }
+  eventCheckPersonal() {
+    const dice = DiceUtil.rollDiceFormula('1d100');
+    const result = Tables.EventFocusPersonal.roll(dice.sum);
+    this.data.addToLog(result, `[Event Check: Personal] D: ${dice.sum}`);
+  }
+  eventCheckEpic() {
+    const dice = DiceUtil.rollDiceFormula('1d100');
+    const result = Tables.EventFocusEpic.roll(dice.sum);
+    this.data.addToLog(result, `[Event Check: Epic] D: ${dice.sum}`);
   }
   //#endregion
   
