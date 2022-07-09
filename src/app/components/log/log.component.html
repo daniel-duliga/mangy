@@ -1,0 +1,18 @@
+<fieldset class="container">
+    <legend><h3>Log</h3></legend>
+    <div class="log-input-container">
+        <input type="text" class="log-input" (keyup.enter)="addCustomLog()" [(ngModel)]="customLog">
+        &nbsp;
+        <button (click)="addCustomLog()">Log</button>
+    </div>
+    <div class="log-content">
+        <div *ngFor="let logEntry of dataService.data.log.getData()" [title]="logEntry.hint">
+            <span class="timestamp">{{logEntry.timestamp | date:'YY-MM-dd HH:mm:ss'}}</span>
+            &nbsp;
+            {{logEntry.value}}
+        </div>
+    </div>
+    <div>
+        <button (click)="dataService.data.log.clear()">Clear</button>
+    </div>
+</fieldset>

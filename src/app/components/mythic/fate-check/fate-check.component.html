@@ -1,0 +1,33 @@
+<fieldset>
+    <legend><b>Fate Check</b></legend>
+    <div>
+        <div class="favors">
+            Favors:
+            <div>
+                <input type="radio" name="favors" value="yes" [(ngModel)]="favors" id="favorsYes" checked>
+                <label for="favorsYes">Yes</label>
+            </div>
+            <div>
+                <input type="radio" name="favors" value="no" [(ngModel)]="favors" id="favorsNo">
+                <label for="favorsNo">No</label>
+            </div>
+        </div>
+        <div class="buttons">
+            <button (click)="fateCheck()">50/50 or unsure</button>
+            <div class="button-groups">
+                <div class="buttons">
+                    <button (click)="fateCheck(2)">Likely</button>
+                    <button (click)="fateCheck(4)">Very likely</button>
+                    <button (click)="fateCheck(6)">Sure thing</button>
+                    <button (click)="fateCheck(8)">Has to be</button>
+                </div>
+                <div class="buttons">
+                    <button (click)="fateCheck(-2)">Unlikely</button>
+                    <button (click)="fateCheck(-4)">Very unlikely</button>
+                    <button (click)="fateCheck(-6)">No way</button>
+                    <button (click)="fateCheck(-8)">Impossible</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>

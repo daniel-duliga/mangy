@@ -1,6 +1,4 @@
 .container {
     display: flex;
-}
-.actions {
-    width: 100%;
+    flex-direction: column;
 }

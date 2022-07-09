@@ -1,0 +1,24 @@
+<fieldset>
+    <legend>
+        <h3>Mythic</h3>
+    </legend>
+    <div class="container">
+        <div>
+            <app-chaos-factor></app-chaos-factor>
+            <app-fate-check></app-fate-check>
+        </div>
+        <div>
+            <app-detail-check></app-detail-check>
+            <app-meaning-tables></app-meaning-tables>
+        </div>
+        <app-event-check></app-event-check>
+        <fieldset>
+            <legend><b>Lists</b></legend>
+            <div class="lists">
+                <app-lists [title]="'PCs'"></app-lists>
+                <app-lists [title]="'NPCs'"></app-lists>
+                <app-lists [title]="'Threads'"></app-lists>
+            </div>
+        </fieldset>
+    </div>
+</fieldset>

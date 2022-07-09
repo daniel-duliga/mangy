@@ -1,0 +1,17 @@
+.container {
+    width: 360px;
+}
+.log-content {
+    height: calc(100vh - 190px);
+    overflow-y: auto;
+    margin: 10px 0 10px 0;
+}
+.log-input-container {
+    display: flex;
+}
+.log-input {
+    width: 100%;
+}
+.timestamp {
+    font-family: monospace;
+}

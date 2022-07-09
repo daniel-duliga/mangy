@@ -1,0 +1,10 @@
+<fieldset>
+    <legend><b>Chaos factor</b></legend>
+    <div class="buttons-container">
+        <button (click)="changeChaosFactor(-1)">-</button>
+        &nbsp;
+        <div><b>{{dataService.data.mythic.chaosFactor}}</b></div>
+        &nbsp;
+        <button (click)="changeChaosFactor(1)">+</button>
+    </div>
+</fieldset>
