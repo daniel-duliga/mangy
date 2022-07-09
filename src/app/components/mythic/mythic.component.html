@@ -15,7 +15,11 @@
         <fieldset>
             <legend><b>Lists</b></legend>
             <div class="lists">
-                <app-list [title]="'PCs'"></app-list>
+                <app-list
+                    [title]="'PCs'"
+                    [items]="dataService.data.mythic.getList('PCs')"
+                    (onItemsChanged)="dataService.data.mythic.setList('PCs', $event)"
+                ></app-list>
                 <app-list [title]="'NPCs'"></app-list>
                 <app-list [title]="'Threads'"></app-list>
             </div>

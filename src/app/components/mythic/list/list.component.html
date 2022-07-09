@@ -1,23 +1,12 @@
 <fieldset style="display: flex; flex-direction: column;">
   <legend>{{title}}</legend>
   <div>
-    <button>Add</button>
-    <button>Rename</button>
-    <button>Delete</button>
+    <button (click)="addItem()">Add</button>
+    <button (click)="renameItems()">Rename</button>
+    <button (click)="removeItems()">Delete</button>
   </div>
-  <select multiple size="6">
-    <option>Lorem Ipsum</option>
-    <option>Dolor Sit Amet</option>
-    <option>Sectetur Adipisicing Elit</option>
-    <option>Esse Perferendis</option>
-    <option>Foo</option>
-    <option>Bar</option>
+  <select multiple size="6" [(ngModel)]="selectedItemsIndexes">
+    <option *ngFor="let item of items; let selectedItemIndex = index;" [value]="selectedItemIndex">{{item}}</option>
   </select>
   <button>Roll</button>
 </fieldset>
-
-<!-- <button title="Remove from list" (click)="removeFromList(list.name)">-</button>
-    <button title="Add to list" (click)="addToList(list.name)">+</button>
-    <button (click)="rollList(list.name)">{{ list.name }}</button>
-    <button title="Remove list" (click)="removeList(list.name)">x</button> -->
-<!-- <button (click)="addList()">+</button> -->

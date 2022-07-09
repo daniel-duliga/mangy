@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DiceUtil } from 'src/app/dice/dice-util';
 import { DataService } from 'src/app/services/data.service';
+import { v4 as uuid } from 'uuid';
 
 @Component({
   selector: 'app-list',
@@ -9,6 +10,11 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class ListComponent implements OnInit {
   @Input() title: string = '';
+  @Input() items: string[] = [];
+
+  @Output() onItemsChanged: EventEmitter<string[]> = new EventEmitter();
+
+  selectedItemsIndexes: number[] = [];
 
   constructor(
     public dataService: DataService
@@ -16,23 +22,27 @@ export class ListComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  // addList() {
-  //   const listName = prompt('List name:');
-  //   if (listName) {
-  //     this.dataService.data.addList(listName);
-  //   }
-  // }
-  // removeList(listName: string) {
-  //   if (confirm(`Are you sure you want to remove List '${listName}'?`)) {
-  //     this.dataService.data.removeList(listName);
-  //   }
-  // }
-  // addToList(listName: string) {
-  //   const value = prompt('Value:');
-  //   if (value) {
-  //     this.dataService.data.addToList(listName, value);
-  //   }
-  // }
+  addItem() {
+    const value = prompt('Value:');
+    if (value) {
+      this.items.push(value);
+      this.onItemsChanged.emit(this.items);
+    }
+  }
+
+  renameItems() {
+    console.log(this.selectedItemsIndexes);
+  }
+
+  removeItems() {
+    const placeholder = uuid();
+    for (const index of this.selectedItemsIndexes) {
+      this.items.splice(index, 1, placeholder);
+    }
+    this.items = this.items.filter(x => x !== placeholder);
+    this.onItemsChanged.emit(this.items);
+  }
+  
   // removeFromList(listName: string) {
   //   const list = this.dataService.data.lists.filter(x => x.name === listName)[0];
     
@@ -53,7 +63,8 @@ export class ListComponent implements OnInit {
   //     this.dataService.data.removeFromList(listName, list.values[+value - 1]);
   //   }
   // }
-  // rollList(listName: string) {
+  
+  // rollOnList(listName: string) {
   //   const list = this.dataService.data.lists.filter(x => x.name === listName)[0];
   //   const dice = DiceUtil.rollDiceFormula(`1d${list.values.length}`);
   //   const result = list.values[dice.sum - 1];

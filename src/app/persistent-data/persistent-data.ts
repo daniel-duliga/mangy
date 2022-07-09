@@ -12,7 +12,7 @@ export class PersistentData {
         if (rawData) {
             const result = JSON.parse(rawData);
             this.log = new Log(this, result.log._data);
-            this.mythic = new Mythic(this, result.mythic._chaosFactor);
+            this.mythic = new Mythic(this, result.mythic._chaosFactor, result.mythic._PCs);
         } else {
             this.log = new Log(this);
             this.mythic = new Mythic(this);
