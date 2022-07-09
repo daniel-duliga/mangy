@@ -3,11 +3,11 @@ import { DiceUtil } from 'src/app/dice/dice-util';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
-  selector: 'app-lists',
-  templateUrl: './lists.component.html',
-  styleUrls: ['./lists.component.scss']
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
 })
-export class ListsComponent implements OnInit {
+export class ListComponent implements OnInit {
   @Input() title: string = '';
 
   constructor(

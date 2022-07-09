@@ -11,7 +11,7 @@ import { FateCheckComponent } from './components/mythic/fate-check/fate-check.co
 import { DetailCheckComponent } from './components/mythic/detail-check/detail-check.component';
 import { EventCheckComponent } from './components/mythic/event-check/event-check.component';
 import { LogComponent } from './components/log/log.component';
-import { ListsComponent } from './components/mythic/lists/lists.component';
+import { ListComponent } from './components/mythic/list/list.component';
 import { GeneralComponent } from './components/general/general.component';
 
 @NgModule({
@@ -24,7 +24,7 @@ import { GeneralComponent } from './components/general/general.component';
     DetailCheckComponent,
     EventCheckComponent,
     LogComponent,
-    ListsComponent,
+    ListComponent,
     GeneralComponent
   ],
   imports: [
