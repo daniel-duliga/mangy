@@ -23,15 +23,11 @@ export class ListComponent implements OnInit {
   ngOnInit(): void { }
 
   addItem() {
-    const value = prompt('Value:');
+    const value = prompt('Name:');
     if (value) {
       this.items.push(value);
       this.onItemsChanged.emit(this.items);
     }
-  }
-
-  renameItems() {
-    console.log(this.selectedItemsIndexes);
   }
 
   removeItems() {
@@ -43,33 +39,21 @@ export class ListComponent implements OnInit {
     this.onItemsChanged.emit(this.items);
   }
   
-  // removeFromList(listName: string) {
-  //   const list = this.dataService.data.lists.filter(x => x.name === listName)[0];
-    
-  //   if (list.values.length === 0) {
-  //     confirm('List is empty!');
-  //     return;
-  //   }
-    
-  //   let message = 'List content:\n\n';
-  //   for (let index = 0; index < list.values.length; index++) {
-  //     const value = list.values[index];
-  //     message = message.concat(`${index + 1}. ${value}\n`);
-  //   }
-  //   message = message.concat('\nNumber of entry to delete:');
-    
-  //   const value = prompt(message);
-  //   if (value && !isNaN(+value)) {
-  //     this.dataService.data.removeFromList(listName, list.values[+value - 1]);
-  //   }
-  // }
-  
-  // rollOnList(listName: string) {
-  //   const list = this.dataService.data.lists.filter(x => x.name === listName)[0];
-  //   const dice = DiceUtil.rollDiceFormula(`1d${list.values.length}`);
-  //   const result = list.values[dice.sum - 1];
-  //   if (result) {
-  //     this.dataService.data.log.add(result, `[List Roll: ${listName}] D: ${dice.sum}`);
-  //   }
-  // }
+  renameItems() {
+    for (const index of this.selectedItemsIndexes) {
+      const value = prompt('New name:', this.items[index]);
+      if (value) {
+        this.items.splice(index, 1, value);
+      }
+    }
+    this.onItemsChanged.emit(this.items);
+  }
+
+  roll() {
+    const dice = DiceUtil.rollDiceFormula(`1d${this.items.length}`);
+    const result = this.items[dice.sum - 1];
+    if (result) {
+      this.dataService.data.log.add(result, `[List Roll: ${this.title}] D: ${dice.sum}`);
+    }
+  }
 }

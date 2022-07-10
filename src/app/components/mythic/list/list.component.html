@@ -5,8 +5,8 @@
     <button (click)="renameItems()">Rename</button>
     <button (click)="removeItems()">Delete</button>
   </div>
-  <select multiple size="6" [(ngModel)]="selectedItemsIndexes">
+  <select multiple size="6" class="items" [(ngModel)]="selectedItemsIndexes">
     <option *ngFor="let item of items; let selectedItemIndex = index;" [value]="selectedItemIndex">{{item}}</option>
   </select>
-  <button>Roll</button>
+  <button (click)="roll()">Roll</button>
 </fieldset>

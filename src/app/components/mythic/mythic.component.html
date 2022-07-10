@@ -14,14 +14,25 @@
         <app-event-check></app-event-check>
         <fieldset>
             <legend><b>Lists</b></legend>
-            <div class="lists">
+            <div class="container">
                 <app-list
+                    class="container"
                     [title]="'PCs'"
-                    [items]="dataService.data.mythic.getList('PCs')"
-                    (onItemsChanged)="dataService.data.mythic.setList('PCs', $event)"
+                    [items]="dataService.data.mythic.getList('pcs')"
+                    (onItemsChanged)="dataService.data.mythic.setList('pcs', $event)"
                 ></app-list>
-                <app-list [title]="'NPCs'"></app-list>
-                <app-list [title]="'Threads'"></app-list>
+                <app-list
+                    class="container"
+                    [title]="'NPCs'"
+                    [items]="dataService.data.mythic.getList('npcs')"
+                    (onItemsChanged)="dataService.data.mythic.setList('npcs', $event)"
+                ></app-list>
+                <app-list
+                    class="container"
+                    [title]="'Threads'"
+                    [items]="dataService.data.mythic.getList('threads')"
+                    (onItemsChanged)="dataService.data.mythic.setList('threads', $event)"
+                ></app-list>
             </div>
         </fieldset>
     </div>

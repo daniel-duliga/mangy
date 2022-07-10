@@ -1,13 +1,13 @@
 import { PersistentData } from "./persistent-data";
 
-type listName = "PCs" | "NPCs" | "Threads";
+type listName = "pcs" | "npcs" | "threads";
 
 export default class Mythic {
     constructor(
         private _parent: PersistentData,
         private _chaosFactor: number = 4,
-        private _PCs: string[] = [],
-        private _NPCs: string[] = [],
+        private _pcs: string[] = [],
+        private _npcs: string[] = [],
         private _threads: string[] = [],
     ) { }
 
@@ -21,18 +21,18 @@ export default class Mythic {
     // lists
     public getList(name: listName): string[] {
         switch (name) {
-            case "PCs": return this._PCs;
-            case "NPCs": return this._NPCs;
-            case "Threads": return this._threads;
+            case "pcs": return this._pcs;
+            case "npcs": return this._npcs;
+            case "threads": return this._threads;
             default: return [];
         }
     }
     public setList(name: listName, value: string[]) {
-        if (name === "PCs") {
-            this._PCs = value;
-        } else if (name === "NPCs") {
-            this._NPCs = value;
-        } else if (name === "Threads") {
+        if (name === "pcs") {
+            this._pcs = value;
+        } else if (name === "npcs") {
+            this._npcs = value;
+        } else if (name === "threads") {
             this._threads = value;
         }
         this._parent.persist();
