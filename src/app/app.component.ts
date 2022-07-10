@@ -9,7 +9,7 @@ import { Tables } from './tables/tables';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'gm-toolbox';
+  title = 'mangy';
 
   constructor(
     public dataService: DataService

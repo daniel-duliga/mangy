@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "gm-toolbox": {
+    "mangy": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -23,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/gm-toolbox",
+            "outputPath": "dist/mangy",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -75,10 +75,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "gm-toolbox:build:production"
+              "browserTarget": "mangy:build:production"
             },
             "development": {
-              "browserTarget": "gm-toolbox:build:development"
+              "browserTarget": "mangy:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -110,5 +110,5 @@
       }
     }
   },
-  "defaultProject": "gm-toolbox"
+  "defaultProject": "mangy"
 }
