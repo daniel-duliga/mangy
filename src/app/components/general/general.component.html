@@ -10,7 +10,7 @@
     <button (click)="rollDice('1d100')">d100</button>
   </div>
   <div>
-    <input (keyup.enter)="rollDice(customDiceFormula)" type="text" [(ngModel)]="customDiceFormula" />
+    <input class="formula" (keyup.enter)="rollDice(customDiceFormula)" type="text" [(ngModel)]="customDiceFormula" />
     <button (click)="rollDice(customDiceFormula)">Roll</button>
   </div>
 </fieldset>
