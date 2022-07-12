@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DiceUtil } from './dice/dice-util';
 import { DataService } from './services/data.service';
-import { Tables } from './tables/tables';
 
 @Component({
   selector: 'app-root',

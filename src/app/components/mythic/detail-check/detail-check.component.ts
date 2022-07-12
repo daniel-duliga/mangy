@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { DiceUtil } from 'src/app/dice/dice-util';
-import { DataService } from 'src/app/services/data.service';
-import { Tables } from 'src/app/tables/tables';
+import { Component, OnInit } from "@angular/core";
+import { DiceUtil } from "src/app/features/dice/dice-util";
+import { DataService } from "src/app/services/data.service";
+import { ListTable, ListTableRow } from "src/app/features/tables/list-table";
+import { RangeTable, RangeTableRow } from "src/app/features/tables/range-table";
+import { DetailCheck } from "./tables";
 
 @Component({
-  selector: 'app-detail-check',
-  templateUrl: './detail-check.component.html',
-  styleUrls: ['./detail-check.component.scss']
+  selector: "app-detail-check",
+  templateUrl: "./detail-check.component.html",
+  styleUrls: ["./detail-check.component.scss"]
 })
 export class DetailCheckComponent implements OnInit {
 
@@ -15,10 +17,10 @@ export class DetailCheckComponent implements OnInit {
   ) { }
 
   ngOnInit(): void { }
-  
+
   detailCheck() {
-    const die1 = DiceUtil.rollDiceFormula('1d10');
-    const die2 = DiceUtil.rollDiceFormula('1d10');
+    const die1 = DiceUtil.rollDiceFormula("1d10");
+    const die2 = DiceUtil.rollDiceFormula("1d10");
     let dieResult = die1.sum + die2.sum;
 
     let modifier = 0;
@@ -28,16 +30,10 @@ export class DetailCheckComponent implements OnInit {
       modifier = -2;
     }
     dieResult += modifier;
-
-    let result = '';
-    if (dieResult <= 4) {
-      result = 'Anger';
-    } else if (dieResult >= 18) {
-      result = 'Calm';
-    } else {
-      result = Tables.DetailCheck.roll(dieResult - 5);
-    }
-
-    this.dataService.data.log.add(result, `[Detail Check] D: ${die1.sum}, ${die2.sum}, MOD: ${modifier}`);
+    const result = DetailCheck.roll(dieResult);
+    this.dataService.data.log.add(
+      result.value,
+      `[Detail Check] D: ${die1.sum}, ${die2.sum}, MOD: ${modifier}\u000d\u000d${result.notes}`
+    );
   }
 }

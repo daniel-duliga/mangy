@@ -3,8 +3,8 @@ export class RangeTable {
         private rows: RangeTableRow[]
     ) { }
 
-    roll(dice: number): string {
-        return this.rows.filter(x => x.min <= dice && x.max >= dice)[0].value;
+    roll(dice: number): RangeTableRow {
+        return this.rows.filter(x => x.min <= dice && x.max >= dice)[0];
     }
 }
 
@@ -13,5 +13,6 @@ export class RangeTableRow {
         public min: number,
         public max: number,
         public value: string,
+        public notes: string = '',
     ) { }
 }

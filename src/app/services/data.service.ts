@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PersistentData } from '../persistent-data/persistent-data';
+import { PersistentData } from '../features/persistent-data/persistent-data';
 
 @Injectable({
   providedIn: 'root'

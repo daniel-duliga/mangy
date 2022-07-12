@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { DiceUtil } from 'src/app/dice/dice-util';
+import { DiceUtil } from 'src/app/features/dice/dice-util';
 import { DataService } from 'src/app/services/data.service';
-import { Tables } from 'src/app/tables/tables';
+import { 
+  EventFocusActionAdventure, 
+  EventFocusEpic, 
+  EventFocusHorror, 
+  EventFocusMystery, 
+  EventFocusPersonal, 
+  EventFocusSocial,
+  EventFocusStandard
+} from './tables';
 
 @Component({
   selector: 'app-event-check',
@@ -17,37 +25,40 @@ export class EventCheckComponent implements OnInit {
 
   eventCheckStandard() {
     const dice = DiceUtil.rollDiceFormula('1d100');
-    const result = Tables.EventFocusStandard.roll(dice.sum);
-    this.dataService.data.log.add(result, `[Event Check: Standard] D: ${dice.sum}`);
+    const result = EventFocusStandard.roll(dice.sum);
+    this.addToLog(result.value, "Standard", dice.sum, result.notes);
   }
   eventCheckHorror() {
     const dice = DiceUtil.rollDiceFormula('1d100');
-    const result = Tables.EventFocusHorror.roll(dice.sum);
-    this.dataService.data.log.add(result, `[Event Check: Horror] D: ${dice.sum}`);
+    const result = EventFocusHorror.roll(dice.sum);
+    this.addToLog(result.value, "Horror", dice.sum, result.notes);
   }
   eventCheckActionAdventure() {
     const dice = DiceUtil.rollDiceFormula('1d100');
-    const result = Tables.EventFocusActionAdventure.roll(dice.sum);
-    this.dataService.data.log.add(result, `[Event Check: Action Adventure] D: ${dice.sum}`);
+    const result = EventFocusActionAdventure.roll(dice.sum);
+    this.addToLog(result.value, "Action Adventure", dice.sum, result.notes);
   }
   eventCheckMystery() {
     const dice = DiceUtil.rollDiceFormula('1d100');
-    const result = Tables.EventFocusMystery.roll(dice.sum);
-    this.dataService.data.log.add(result, `[Event Check: Mystery] D: ${dice.sum}`);
+    const result = EventFocusMystery.roll(dice.sum);
+    this.addToLog(result.value, "Mystery", dice.sum, result.notes);
   }
   eventCheckSocial() {
     const dice = DiceUtil.rollDiceFormula('1d100');
-    const result = Tables.EventFocusSocial.roll(dice.sum);
-    this.dataService.data.log.add(result, `[Event Check: Social] D: ${dice.sum}`);
+    const result = EventFocusSocial.roll(dice.sum);
+    this.addToLog(result.value, "Social", dice.sum, result.notes);
   }
   eventCheckPersonal() {
     const dice = DiceUtil.rollDiceFormula('1d100');
-    const result = Tables.EventFocusPersonal.roll(dice.sum);
-    this.dataService.data.log.add(result, `[Event Check: Personal] D: ${dice.sum}`);
+    const result = EventFocusPersonal.roll(dice.sum);
+    this.addToLog(result.value, "Personal", dice.sum, result.notes);
   }
   eventCheckEpic() {
     const dice = DiceUtil.rollDiceFormula('1d100');
-    const result = Tables.EventFocusEpic.roll(dice.sum);
-    this.dataService.data.log.add(result, `[Event Check: Epic] D: ${dice.sum}`);
+    const result = EventFocusEpic.roll(dice.sum);
+    this.addToLog(result.value, "Epic", dice.sum, result.notes);
+  }
+  addToLog(value: string, check: string, dice: number, notes: string) {
+    this.dataService.data.log.add(value, `[Event Check: ${check}] D: ${dice}\u000d\u000d${notes}`);
   }
 }

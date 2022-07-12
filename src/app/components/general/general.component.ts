@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DiceUtil } from 'src/app/dice/dice-util';
+import { DiceUtil } from 'src/app/features/dice/dice-util';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({

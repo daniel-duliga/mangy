@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { DiceUtil } from 'src/app/dice/dice-util';
+import { DiceUtil } from 'src/app/features/dice/dice-util';
 import { DataService } from 'src/app/services/data.service';
 import { v4 as uuid } from 'uuid';
 
