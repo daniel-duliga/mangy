@@ -1,5 +1,4 @@
-<fieldset style="display: flex; flex-direction: column;">
-  <legend>{{title}}</legend>
+<div style="display: flex; flex-direction: column;">
   <div>
     <button (click)="addItem()">Add</button>
     <button (click)="renameItems()">Rename</button>
@@ -9,4 +8,4 @@
     <option *ngFor="let item of items; let selectedItemIndex = index;" [value]="selectedItemIndex">{{item}}</option>
   </select>
   <button (click)="roll()">Roll</button>
-</fieldset>
+</div>

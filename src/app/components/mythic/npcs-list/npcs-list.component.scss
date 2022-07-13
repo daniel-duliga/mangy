@@ -1,0 +1,21 @@
+.descriptors {
+    display: flex;
+    flex-direction: column;
+}
+.descriptor {
+    display: grid;
+    grid-template-columns: 1fr 4fr auto 2fr;
+    align-items: center;
+
+    label {
+        font-size: 10pt;
+    }
+
+    input[type=text] {
+        width: 125px;
+    }
+}
+.disposition {
+    width: 30px;
+    margin-left: 1px;
+}

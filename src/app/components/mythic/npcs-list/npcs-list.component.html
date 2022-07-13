@@ -1,0 +1,43 @@
+<fieldset>
+    <legend>NPCs</legend>
+    <div style="display: flex;">
+        <app-list
+            [title]="'List'"
+            [items]="npcNames"
+            (onItemsChanged)="npcNamesChanged($event)"
+        ></app-list>
+        &nbsp;
+        <div class="descriptors">
+            <div class="descriptor">
+                <input type="checkbox" title="Active" id="identity_active">
+                <label for="identity_active">Identity</label>
+                <input type="text" id="identity">
+                <button>Roll</button>
+            </div>
+            <div class="descriptor">
+                <input type="checkbox" title="Active" id="personality_active">
+                <label for="personality_active">Personality</label>
+                <input type="text" id="personality">
+                <button>Roll</button>
+            </div>
+            <div class="descriptor">
+                <input type="checkbox" title="Active" id="activity_active">
+                <label for="activity_active">Activity</label>
+                <input type="text" id="activity">
+                <button>Roll</button>
+            </div>
+            <br>
+            <div class="descriptor">
+                <div></div>
+                <label for="disposition">Disposition</label>
+                <input type="text" disabled id="disposition">
+                <input class="disposition" type="number" min="-2" max="2" value="0" id="disposition" title="Modifier">
+            </div>
+            <br>
+            <div style="display: flex; justify-content: space-evenly;">
+                <button>NPC Action 1</button>
+                <button>NPC Action 2</button>
+            </div>
+        </div>
+    </div>
+</fieldset>

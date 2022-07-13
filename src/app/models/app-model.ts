@@ -1,18 +1,18 @@
-import Log from "./log";
-import Mythic from "./mythic";
+import LogModel from "./log-model";
+import MythicModel from "./mythic/mythic-model";
 
-export class PersistentData {
+export class AppModel {
     private static key = 'data';
     
-    public log: Log;
-    public mythic: Mythic;
+    public log: LogModel;
+    public mythic: MythicModel;
 
     constructor() {
-        const rawData = localStorage.getItem(PersistentData.key);
+        const rawData = localStorage.getItem(AppModel.key);
         if (rawData) {
             const result = JSON.parse(rawData);
-            this.log = new Log(this, result.log._data);
-            this.mythic = new Mythic(
+            this.log = new LogModel(this, result.log._data);
+            this.mythic = new MythicModel(
                 this,
                 result.mythic._chaosFactor,
                 result.mythic._pcs,
@@ -20,13 +20,13 @@ export class PersistentData {
                 result.mythic._threads
             );
         } else {
-            this.log = new Log(this);
-            this.mythic = new Mythic(this);
+            this.log = new LogModel(this);
+            this.mythic = new MythicModel(this);
         }
     }
 
     public persist() {
-        localStorage.setItem(PersistentData.key, JSON.stringify(this, replacer));
+        localStorage.setItem(AppModel.key, JSON.stringify(this, replacer));
 
         function replacer(key: string, value: any): any {
             if (key === '_parent') {

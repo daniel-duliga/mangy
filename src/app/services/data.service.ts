@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { PersistentData } from '../features/persistent-data/persistent-data';
+import { AppModel } from '../models/app-model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
-  public data: PersistentData = new PersistentData();
+  public data: AppModel = new AppModel();
 
   constructor() { }
 }

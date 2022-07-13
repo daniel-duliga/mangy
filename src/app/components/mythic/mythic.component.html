@@ -15,21 +15,23 @@
         <fieldset>
             <legend><b>Lists</b></legend>
             <div class="container">
-                <app-list
-                    [title]="'PCs'"
-                    [items]="dataService.data.mythic.getList('pcs')"
-                    (onItemsChanged)="dataService.data.mythic.setList('pcs', $event)"
-                ></app-list>
-                <app-list
-                    [title]="'NPCs'"
-                    [items]="dataService.data.mythic.getList('npcs')"
-                    (onItemsChanged)="dataService.data.mythic.setList('npcs', $event)"
-                ></app-list>
-                <app-list
-                    [title]="'Threads'"
-                    [items]="dataService.data.mythic.getList('threads')"
-                    (onItemsChanged)="dataService.data.mythic.setList('threads', $event)"
-                ></app-list>
+                <fieldset>
+                    <legend>PCs</legend>
+                    <app-list
+                        [title]="'PCs'"
+                        [items]="dataService.data.mythic.pcs"
+                        (onItemsChanged)="dataService.data.mythic.pcs = $event"
+                    ></app-list>
+                </fieldset>
+                <fieldset>
+                    <legend>Threads</legend>
+                    <app-list
+                        [title]="'Threads'"
+                        [items]="dataService.data.mythic.threads"
+                        (onItemsChanged)="dataService.data.mythic.threads = $event"
+                    ></app-list>
+                </fieldset>
+                <app-npcs-list></app-npcs-list>
             </div>
         </fieldset>
     </div>
