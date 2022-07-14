@@ -1,13 +1,14 @@
+import ListItem from "../../list-item";
 import { AppModel } from "../app-model";
-import MythicNpcModel from "./mythic-npc-model";
+import { MythicNpcModel } from "./mythic-npc-model";
 
 export default class MythicModel {
     constructor(
         private _parent: AppModel,
         private _chaosFactor: number = 4,
-        private _pcs: string[] = [],
+        private _pcs: ListItem[] = [],
         private _npcs: MythicNpcModel[] = [],
-        private _threads: string[] = [],
+        private _threads: ListItem[] = [],
     ) { }
 
     // chaos factor
@@ -20,26 +21,26 @@ export default class MythicModel {
 
     // lists
 
-    public get pcs() : string[] {
+    public get pcs(): ListItem[] {
         return this._pcs;
     }
-    public set pcs(v : string[]) {
+    public set pcs(v: ListItem[]) {
         this._pcs = v;
         this._parent.persist();
     }
-    
-    public get npcs() : MythicNpcModel[] {
-        return this._npcs;
+
+    public get npcs(): MythicNpcModel[] {
+        return [...this._npcs];
     }
-    public set npcs(v : MythicNpcModel[]) {
+    public set npcs(v: MythicNpcModel[]) {
         this._npcs = v;
         this._parent.persist();
     }
 
-    public get threads() : string[] {
+    public get threads(): ListItem[] {
         return this._threads;
     }
-    public set threads(v : string[]) {
+    public set threads(v: ListItem[]) {
         this._threads = v;
         this._parent.persist();
     }

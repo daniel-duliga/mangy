@@ -3,27 +3,61 @@
     <div style="display: flex;">
         <app-list
             [title]="'List'"
-            [items]="npcNames"
-            (onItemsChanged)="npcNamesChanged($event)"
+            [items]="dataService.data.mythic.npcs"
+            (onItemsChanged)="npcsChanged($event)"
+            (onSelectedItemChanged)="selectedItemChanged($event)"
         ></app-list>
         &nbsp;
-        <div class="descriptors">
+        <div *ngIf="selectedItem" class="descriptors">
             <div class="descriptor">
-                <input type="checkbox" title="Active" id="identity_active">
+                <input
+                    type="checkbox"
+                    title="Active"
+                    id="identity_active"
+                    [(ngModel)]="selectedItem.identity.active"
+                    (change)="selectedItemUpdated()"
+                >
                 <label for="identity_active">Identity</label>
-                <input type="text" id="identity">
+                <input
+                    type="text"
+                    id="identity"
+                    [(ngModel)]="selectedItem.identity.value"
+                    (change)="selectedItemUpdated()"
+                >
                 <button>Roll</button>
             </div>
             <div class="descriptor">
-                <input type="checkbox" title="Active" id="personality_active">
+                <input
+                    type="checkbox"
+                    title="Active"
+                    id="personality_active"
+                    [(ngModel)]="selectedItem.personality.active"
+                    (change)="selectedItemUpdated()"
+                >
                 <label for="personality_active">Personality</label>
-                <input type="text" id="personality">
+                <input
+                    type="text"
+                    id="personality"
+                    [(ngModel)]="selectedItem.personality.value"
+                    (change)="selectedItemUpdated()"
+                >
                 <button>Roll</button>
             </div>
             <div class="descriptor">
-                <input type="checkbox" title="Active" id="activity_active">
+                <input
+                    type="checkbox"
+                    title="Active"
+                    id="activity_active"
+                    [(ngModel)]="selectedItem.activity.active"
+                    (change)="selectedItemUpdated()"
+                >
                 <label for="activity_active">Activity</label>
-                <input type="text" id="activity">
+                <input
+                    type="text"
+                    id="activity"
+                    [(ngModel)]="selectedItem.activity.value"
+                    (change)="selectedItemUpdated()"
+                >
                 <button>Roll</button>
             </div>
             <br>

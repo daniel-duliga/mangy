@@ -4,8 +4,8 @@
     <button (click)="renameItems()">Rename</button>
     <button (click)="removeItems()">Delete</button>
   </div>
-  <select multiple size="6" class="items" [(ngModel)]="selectedItemsIndexes">
-    <option *ngFor="let item of items; let selectedItemIndex = index;" [value]="selectedItemIndex">{{item}}</option>
+  <select multiple size="6" class="items" [(ngModel)]="selectedItemIds" (change)="ngModelChange()">
+    <option *ngFor="let item of items; let selectedItemIndex = index;" [value]="item.id">{{item.name}}</option>
   </select>
   <button (click)="roll()">Roll</button>
 </div>

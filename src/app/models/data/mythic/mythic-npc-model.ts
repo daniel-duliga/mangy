@@ -1,13 +1,18 @@
-export default class MythicNpcModel {
+import ListItem from "../../list-item";
+
+export class MythicNpcModel extends ListItem {
     constructor(
-        public name: string,
+        id: string,
+        name: string,
         public identity: Descriptor = new Descriptor(),
         public personality: Descriptor = new Descriptor(),
         public activity: Descriptor = new Descriptor(),
-    ) {}
+    ) {
+        super(id, name);
+    }
 }
 
-class Descriptor {
+export class Descriptor {
     constructor(
         public value: string = '',
         public active: boolean = false,
