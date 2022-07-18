@@ -1,0 +1,116 @@
+<fieldset class="descriptors">
+    <legend><b>Behavior Check</b></legend>
+    <select [(ngModel)]="selectedNpcId" (ngModelChange)="selectedNpcChanged($event)">
+        <option *ngFor="let npc of dataService.data.mythic.npcs" value="{{npc.id}}">{{npc.name}}</option>
+    </select>
+    <br>
+    <div class="descriptor">
+        <input
+            type="checkbox"
+            title="Active"
+            id="identity_active"
+            [(ngModel)]="this.selectedNpc.identity.active"
+            (change)="selectedNpcUpdated()"
+        >
+        &nbsp;
+        <label for="identity_active">Identity</label>
+        &nbsp;
+        <input
+            type="text"
+            id="identity"
+            [(ngModel)]="selectedNpc.identity.value"
+            (change)="selectedNpcUpdated()"
+            title="This Descriptor says who this person is, what role they fulfill, and how they are primarily seen by others. This is usually big picture stuff like “police officer” or “bartender,” and is usually apparent from the start."
+        >
+        <button (click)="rollIdentity()">Roll</button>
+        &nbsp;
+        <div class="modifier" title="Modifiers">
+            <div>
+                <input type="radio" id="identity_lowers" [(ngModel)]="identityModifier" value="lowers">
+                <label for="identity_lowers">Lowers</label>
+            </div>
+            <div>
+                <input type="radio" id="identity_neutral" [(ngModel)]="identityModifier" value="neutral" checked>
+                <label for="identity_neutral">Neutral</label>
+            </div>
+            <div>
+                <input type="radio" id="identity_intensifies" [(ngModel)]="identityModifier" value="intensifies">
+                <label for="identity_intensifies">Intensifies</label>
+            </div>
+        </div>
+    </div>
+    <div class="descriptor">
+        <input
+            type="checkbox"
+            title="Active"
+            id="personality_active"
+            [(ngModel)]="selectedNpc.personality.active"
+            (change)="selectedNpcUpdated()"
+        >
+        &nbsp;
+        <label for="personality_active">Personality</label>
+        &nbsp;
+        <input
+            type="text"
+            id="personality"
+            [(ngModel)]="selectedNpc.personality.value"
+            (change)="selectedNpcUpdated()"
+            title="This Descriptor gives the Character's most obvious personality trait. It could be anything from “Happy” to “Has anger management issues” to whatever you like. This should be fairly general and is used to summarize the NPC's personality overall. It doesn't mean that the Character is always exhibiting this personality, just that their personality tends to revert to this trait as a default."
+        >
+        <button (click)="rollPersonality()">Roll</button>
+        &nbsp;
+        <div class="modifier" title="Modifiers">
+            <div>
+                <input type="radio" id="personality_lowers" [(ngModel)]="personalityModifier" value="lowers">
+                <label for="personality_lowers">Lowers</label>
+            </div>
+            <div>
+                <input type="radio" id="personality_neutral" [(ngModel)]="personalityModifier" value="neutral" checked>
+                <label for="personality_neutral">Neutral</label>
+            </div>
+            <div>
+                <input type="radio" id="personality_intensifies" [(ngModel)]="personalityModifier" value="intensifies">
+                <label for="personality_intensifies">Intensifies</label>
+            </div>
+        </div>
+    </div>
+    <div class="descriptor">
+        <input
+            type="checkbox"
+            title="Active"
+            id="activity_active"
+            [(ngModel)]="selectedNpc.activity.active"
+            (change)="selectedNpcUpdated()"
+        >
+        &nbsp;
+        <label for="activity_active">Activity</label>
+        &nbsp;
+        <input
+            type="text"
+            id="activity"
+            [(ngModel)]="selectedNpc.activity.value"
+            (change)="selectedNpcUpdated()"
+            title="This Descriptor indicates how this Character approaches most problems or how they go about most activities. This is similar to the Personality Trait, but it is focused on action instead of manner. This trait does not have to coincide with Personality."
+        >
+        <button (click)="rollActivity()">Roll</button>
+        &nbsp;
+        <div class="modifier" title="Modifiers">
+            <div>
+                <input type="radio" id="activity_lowers" [(ngModel)]="activityModifier" value="lowers">
+                <label for="activity_lowers">Lowers</label>
+            </div>
+            <div>
+                <input type="radio" id="activity_neutral" [(ngModel)]="activityModifier" value="neutral" checked>
+                <label for="activity_neutral">Neutral</label>
+            </div>
+            <div>
+                <input type="radio" id="activity_intensifies" [(ngModel)]="activityModifier" value="intensifies">
+                <label for="activity_intensifies">Intensifies</label>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div style="display: flex; justify-content: space-evenly;">
+        <button (click)="behaviorCheck()">Behavior Check</button>
+    </div>
+</fieldset>

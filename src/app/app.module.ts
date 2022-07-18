@@ -13,7 +13,7 @@ import { EventCheckComponent } from './components/mythic/event-check/event-check
 import { LogComponent } from './components/log/log.component';
 import { ListComponent } from './components/mythic/list/list.component';
 import { GeneralComponent } from './components/general/general.component';
-import { NpcsListComponent } from './components/mythic/npcs-list/npcs-list.component';
+import { BehaviorCheckComponent } from './components/mythic/behavior-check/behavior-check.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,7 @@ import { NpcsListComponent } from './components/mythic/npcs-list/npcs-list.compo
     LogComponent,
     ListComponent,
     GeneralComponent,
-    NpcsListComponent
+    BehaviorCheckComponent
   ],
   imports: [
     BrowserModule,

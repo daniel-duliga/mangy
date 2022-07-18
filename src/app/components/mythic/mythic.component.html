@@ -12,6 +12,9 @@
             <app-meaning-tables></app-meaning-tables>
         </div>
         <app-event-check></app-event-check>
+        <app-behavior-check></app-behavior-check>
+    </div>
+    <div class="container">
         <fieldset>
             <legend><b>Lists</b></legend>
             <div class="container">
@@ -31,7 +34,14 @@
                         (onItemsChanged)="dataService.data.mythic.threads = $event"
                     ></app-list>
                 </fieldset>
-                <app-npcs-list></app-npcs-list>
+                <fieldset>
+                    <legend>NPCs</legend>
+                    <app-list
+                        [title]="'List'"
+                        [items]="dataService.data.mythic.npcs"
+                        (onItemsChanged)="npcsChanged($event)"
+                    ></app-list>
+                </fieldset>
             </div>
         </fieldset>
     </div>

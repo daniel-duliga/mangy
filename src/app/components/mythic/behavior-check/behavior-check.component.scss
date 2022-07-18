@@ -4,18 +4,17 @@
 }
 .descriptor {
     display: grid;
-    grid-template-columns: 1fr 4fr auto 2fr;
+    grid-template-columns: auto 1fr auto auto auto auto auto auto;
     align-items: center;
 
     label {
         font-size: 10pt;
     }
-
-    input[type=text] {
-        width: 135px;
-    }
 }
 .disposition {
     width: 30px;
     margin-left: 1px;
+}
+.modifier {
+    display: flex;
 }
