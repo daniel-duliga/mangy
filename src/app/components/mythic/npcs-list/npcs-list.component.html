@@ -23,8 +23,9 @@
                     id="identity"
                     [(ngModel)]="selectedItem.identity.value"
                     (change)="selectedItemUpdated()"
+                    title="This Descriptor says who this person is, what role they fulfill, and how they are primarily seen by others. This is usually big picture stuff like “police officer” or “bartender,” and is usually apparent from the start."
                 >
-                <button>Roll</button>
+                <button (click)="rollIdentity()">Roll</button>
             </div>
             <div class="descriptor">
                 <input
@@ -40,8 +41,9 @@
                     id="personality"
                     [(ngModel)]="selectedItem.personality.value"
                     (change)="selectedItemUpdated()"
+                    title="This Descriptor gives the Character's most obvious personality trait. It could be anything from “Happy” to “Has anger management issues” to whatever you like. This should be fairly general and is used to summarize the NPC's personality overall. It doesn't mean that the Character is always exhibiting this personality, just that their personality tends to revert to this trait as a default."
                 >
-                <button>Roll</button>
+                <button (click)="rollPersonality()">Roll</button>
             </div>
             <div class="descriptor">
                 <input
@@ -57,20 +59,21 @@
                     id="activity"
                     [(ngModel)]="selectedItem.activity.value"
                     (change)="selectedItemUpdated()"
+                    title="This Descriptor indicates how this Character approaches most problems or how they go about most activities. This is similar to the Personality Trait, but it is focused on action instead of manner. This trait does not have to coincide with Personality."
                 >
-                <button>Roll</button>
+                <button (click)="rollActivity()">Roll</button>
             </div>
-            <br>
             <div class="descriptor">
                 <div></div>
                 <label for="disposition">Disposition</label>
-                <input type="text" disabled id="disposition">
-                <input class="disposition" type="number" min="-2" max="2" value="0" id="disposition" title="Modifier">
+                <div>
+                    <input type="text" disabled id="disposition" [(ngModel)]="disposition">
+                </div>
+                <button (click)="rollDisposition()">Roll</button>
             </div>
             <br>
             <div style="display: flex; justify-content: space-evenly;">
-                <button>NPC Action 1</button>
-                <button>NPC Action 2</button>
+                <button (click)="behaviorCheck()">Behavior Check</button>
             </div>
         </div>
     </div>
