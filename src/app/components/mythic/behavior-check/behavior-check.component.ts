@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
+import { RangeTable, RangeTableRow } from 'src/app/features/tables/range-table';
 import { MythicNpcModel } from 'src/app/models/data/mythic/mythic-npc-model';
 import { DataService } from 'src/app/services/data.service';
 import MeaningTables from '../meaning-tables';
@@ -82,6 +83,20 @@ export class BehaviorCheckComponent implements OnInit {
 
   behaviorCheck() {
     this.disposition = DiceUtil.rollDiceFormula('1d10').sum + DiceUtil.rollDiceFormula('1d10').sum;
+    let identityMod = 0, personalityMod = 0, activityMod = 0;
+    if (this.selectedNpc.identity.active && this.identityModifier !== 'neutral') {
+      identityMod = this.identityModifier === 'intensifies' ? 2 : -2;
+    }
+    if (this.selectedNpc.personality.active && this.personalityModifier !== 'neutral') {
+      personalityMod = this.personalityModifier === 'intensifies' ? 2 : -2;
+    }
+    if (this.selectedNpc.activity.active && this.activityModifier !== 'neutral') {
+      activityMod = this.activityModifier === 'intensifies' ? 2 : -2;
+    }
+    
+    const roll = this.disposition + identityMod + personalityMod + activityMod;
+    const result = DispositionTable.roll(roll);
+    this.dataService.data.log.add(result.value, `[Behavior Check] D: ${this.disposition}, IMOD: ${identityMod}, PMOD: ${personalityMod}, AMOD: ${activityMod}\u000d\u000d${result.notes}`);
   }
   
   private persistSelectedItem() {
@@ -95,3 +110,10 @@ export class BehaviorCheckComponent implements OnInit {
     }
   }
 }
+
+export const DispositionTable = new RangeTable([
+  new RangeTableRow(-4, 5, 'Passive (-2)', 'The Character takes the softest approach to their Actions.'),
+  new RangeTableRow(6, 10, 'Moderate (0)', 'The Character acts in a moderate fashion, not too intense, not too passive'),
+  new RangeTableRow(11, 15, 'Active (+2)', 'The Character wants to make their Actions known'),
+  new RangeTableRow(16, 26, 'Aggressive (+4)', 'The Character acts with the utmost urgency and intensity'),
+]);
