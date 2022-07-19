@@ -26,15 +26,33 @@
         &nbsp;
         <div class="modifier" title="Modifiers">
             <div>
-                <input type="radio" name="identity_modifier" id="identity_lowers" [(ngModel)]="identityModifier" value="lowers">
+                <input
+                    type="radio"
+                    name="identity_modifier"
+                    id="identity_lowers"
+                    [(ngModel)]="selectedNpc.identity.modifier"
+                    value="lowers"
+                    (change)="selectedNpcUpdated()">
                 <label for="identity_lowers">Lowers</label>
             </div>
             <div>
-                <input type="radio" name="identity_modifier" id="identity_neutral" [(ngModel)]="identityModifier" value="neutral" checked>
+                <input
+                    type="radio"
+                    name="identity_modifier"
+                    id="identity_neutral"
+                    [(ngModel)]="selectedNpc.identity.modifier"
+                    value="neutral"
+                    (change)="selectedNpcUpdated()">
                 <label for="identity_neutral">Neutral</label>
             </div>
             <div>
-                <input type="radio" name="identity_modifier" id="identity_intensifies" [(ngModel)]="identityModifier" value="intensifies">
+                <input 
+                    type="radio"
+                    name="identity_modifier"
+                    id="identity_intensifies"
+                    [(ngModel)]="selectedNpc.identity.modifier"
+                    value="intensifies"
+                    (change)="selectedNpcUpdated()">
                 <label for="identity_intensifies">Intensifies</label>
             </div>
         </div>
@@ -61,15 +79,33 @@
         &nbsp;
         <div class="modifier" title="Modifiers">
             <div>
-                <input type="radio" name="personality_modifier" id="personality_lowers" [(ngModel)]="personalityModifier" value="lowers">
+                <input
+                    type="radio"
+                    name="personality_modifier"
+                    id="personality_lowers"
+                    [(ngModel)]="selectedNpc.personality.modifier"
+                    value="lowers"
+                    (change)="selectedNpcUpdated()">
                 <label for="personality_lowers">Lowers</label>
             </div>
             <div>
-                <input type="radio" name="personality_modifier" id="personality_neutral" [(ngModel)]="personalityModifier" value="neutral" checked>
+                <input
+                    type="radio"
+                    name="personality_modifier"
+                    id="personality_neutral"
+                    [(ngModel)]="selectedNpc.personality.modifier"
+                    value="neutral"
+                    (change)="selectedNpcUpdated()">
                 <label for="personality_neutral">Neutral</label>
             </div>
             <div>
-                <input type="radio" name="personality_modifier" id="personality_intensifies" [(ngModel)]="personalityModifier" value="intensifies">
+                <input
+                    type="radio"
+                    name="personality_modifier"
+                    id="personality_intensifies"
+                    [(ngModel)]="selectedNpc.personality.modifier"
+                    value="intensifies"
+                    (change)="selectedNpcUpdated()">
                 <label for="personality_intensifies">Intensifies</label>
             </div>
         </div>
@@ -96,21 +132,58 @@
         &nbsp;
         <div class="modifier" title="Modifiers">
             <div>
-                <input type="radio" name="activity_modifier" id="activity_lowers" [(ngModel)]="activityModifier" value="lowers">
+                <input
+                    type="radio"
+                    name="activity_modifier"
+                    id="activity_lowers"
+                    [(ngModel)]="selectedNpc.activity.modifier"
+                    value="lowers"
+                    (change)="selectedNpcUpdated()">
                 <label for="activity_lowers">Lowers</label>
             </div>
             <div>
-                <input type="radio" name="activity_modifier" id="activity_neutral" [(ngModel)]="activityModifier" value="neutral" checked>
+                <input
+                    type="radio"
+                    name="activity_modifier"
+                    id="activity_neutral"
+                    [(ngModel)]="selectedNpc.activity.modifier"
+                    value="neutral"
+                    (change)="selectedNpcUpdated()">
                 <label for="activity_neutral">Neutral</label>
             </div>
             <div>
-                <input type="radio" name="activity_modifier" id="activity_intensifies" [(ngModel)]="activityModifier" value="intensifies">
+                <input
+                    type="radio"
+                    name="activity_modifier"
+                    id="activity_intensifies"
+                    [(ngModel)]="selectedNpc.activity.modifier"
+                    value="intensifies"
+                    (change)="selectedNpcUpdated()">
                 <label for="activity_intensifies">Intensifies</label>
             </div>
         </div>
     </div>
     <br>
-    <div style="display: flex; justify-content: space-evenly;">
-        <button (click)="behaviorCheck()">Behavior Check</button>
+    <div style="display: flex; justify-content: center;">
+        <div style="display: flex; align-items: center;">
+            <label for="disposition">Disposition</label>
+            &nbsp;
+            <div style="display: flex; flex-direction: column;">
+                <button (click)="changeDisposition(2)">+2</button>
+                <input
+                    type="number"
+                    min="-4"
+                    max="26"
+                    disabled
+                    id="disposition"
+                    style="width: 35px;"
+                    [(ngModel)]="selectedNpc.disposition">
+                <button (click)="changeDisposition(-2)">-2</button>
+            </div>
+            <button (click)="rollDisposition()">Roll</button>
+            &nbsp;
+            <label style="width: 125px;" [title]="dispositionDescriptorExplanation">= {{dispositionDescriptor}}</label>
+            <button style="height: 40px;" (click)="npcAction()">NPC Action</button>
+        </div>
     </div>
 </fieldset>

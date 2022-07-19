@@ -19,7 +19,8 @@ export class BehaviorCheckComponent implements OnInit {
   personalityModifier: 'lowers' | 'neutral' | 'intensifies' = 'neutral';
   activityModifier: 'lowers' | 'neutral' | 'intensifies' = 'neutral';
   
-  disposition: number = 0;
+  dispositionDescriptor: string = '';
+  dispositionDescriptorExplanation: string = '';
 
   constructor(
     public dataService: DataService
@@ -32,6 +33,7 @@ export class BehaviorCheckComponent implements OnInit {
       this.selectedNpc = new MythicNpcModel('', '');
     }
     this.selectedNpcId = this.selectedNpc.id;
+    this.displayDisposition(this.selectedNpc.disposition);
   }
 
   selectedNpcChanged(npcId: string) {
@@ -59,7 +61,7 @@ export class BehaviorCheckComponent implements OnInit {
       const descriptor1 = MeaningTables.Action1.roll(DiceUtil.rollDiceFormula('1d100').sum);
       const descriptor2 = MeaningTables.Action2.roll(DiceUtil.rollDiceFormula('1d100').sum);
       this.selectedNpc.identity.value = `${descriptor1.value} ${descriptor2.value}`;
-      this.persistSelectedItem();
+      this.persistSelectedNpc();
     }
   }
 
@@ -68,7 +70,7 @@ export class BehaviorCheckComponent implements OnInit {
       const descriptor1 = MeaningTables.Descriptor1.roll(DiceUtil.rollDiceFormula('1d100').sum);
       const descriptor2 = MeaningTables.Descriptor2.roll(DiceUtil.rollDiceFormula('1d100').sum);
       this.selectedNpc.personality.value = `${descriptor1.value} ${descriptor2.value}`;
-      this.persistSelectedItem();
+      this.persistSelectedNpc();
     }
   }
 
@@ -77,29 +79,52 @@ export class BehaviorCheckComponent implements OnInit {
       const descriptor1 = MeaningTables.Action1.roll(DiceUtil.rollDiceFormula('1d100').sum);
       const descriptor2 = MeaningTables.Action2.roll(DiceUtil.rollDiceFormula('1d100').sum);
       this.selectedNpc.activity.value = `${descriptor1.value} ${descriptor2.value}`;
-      this.persistSelectedItem();
+      this.persistSelectedNpc();
     }
   }
 
-  behaviorCheck() {
-    this.disposition = DiceUtil.rollDiceFormula('1d10').sum + DiceUtil.rollDiceFormula('1d10').sum;
+  rollDisposition() {
+    const roll = DiceUtil.rollDiceFormula('1d10').sum + DiceUtil.rollDiceFormula('1d10').sum;
     let identityMod = 0, personalityMod = 0, activityMod = 0;
-    if (this.selectedNpc.identity.active && this.identityModifier !== 'neutral') {
-      identityMod = this.identityModifier === 'intensifies' ? 2 : -2;
+    if (this.selectedNpc.identity.active && this.selectedNpc.identity.modifier !== 'neutral') {
+      identityMod = this.selectedNpc.identity.modifier === 'intensifies' ? 2 : -2;
     }
-    if (this.selectedNpc.personality.active && this.personalityModifier !== 'neutral') {
-      personalityMod = this.personalityModifier === 'intensifies' ? 2 : -2;
+    if (this.selectedNpc.personality.active && this.selectedNpc.personality.modifier !== 'neutral') {
+      personalityMod = this.selectedNpc.personality.modifier === 'intensifies' ? 2 : -2;
     }
-    if (this.selectedNpc.activity.active && this.activityModifier !== 'neutral') {
-      activityMod = this.activityModifier === 'intensifies' ? 2 : -2;
+    if (this.selectedNpc.activity.active && this.selectedNpc.activity.modifier !== 'neutral') {
+      activityMod = this.selectedNpc.activity.modifier === 'intensifies' ? 2 : -2;
     }
     
-    const roll = this.disposition + identityMod + personalityMod + activityMod;
-    const result = DispositionTable.roll(roll);
-    this.dataService.data.log.add(result.value, `[Behavior Check] D: ${this.disposition}, IMOD: ${identityMod}, PMOD: ${personalityMod}, AMOD: ${activityMod}\u000d\u000d${result.notes}`);
+    this.saveAndDisplayDisposition(roll, identityMod, personalityMod, activityMod);
+  }
+
+  changeDisposition(modifier: number) {
+    this.saveAndDisplayDisposition(this.selectedNpc.disposition + modifier)
   }
   
-  private persistSelectedItem() {
+  saveAndDisplayDisposition(
+    initialDisposition: number, identityMod: number = 0, personalityMod: number = 0, activityMod: number = 0)
+  {
+    this.selectedNpc.disposition = initialDisposition + identityMod + personalityMod + activityMod;
+    this.persistSelectedNpc();
+    this.displayDisposition(initialDisposition, identityMod, personalityMod, activityMod);
+  }
+
+  npcAction() {
+    const roll = DiceUtil.rollDiceFormula('1d10');
+    
+  }
+
+  private displayDisposition(
+    initialDisposition: number = 0, identityMod: number = 0, personalityMod: number = 0, activityMod: number = 0) 
+  {
+    const result = DispositionTable.roll(this.selectedNpc.disposition);
+    this.dispositionDescriptor = result.value;
+    this.dispositionDescriptorExplanation = `D: ${initialDisposition}, IMOD: ${identityMod}, PMOD: ${personalityMod}, AMOD: ${activityMod}\u000d\u000d${result.notes}`;
+  }
+
+  private persistSelectedNpc() {
     if (this.selectedNpc) {
       const npcs = this.dataService.data.mythic.npcs;
       const index = npcs.findIndex(x => x.id === this.selectedNpc?.id);
@@ -113,7 +138,16 @@ export class BehaviorCheckComponent implements OnInit {
 
 export const DispositionTable = new RangeTable([
   new RangeTableRow(-4, 5, 'Passive (-2)', 'The Character takes the softest approach to their Actions.'),
-  new RangeTableRow(6, 10, 'Moderate (0)', 'The Character acts in a moderate fashion, not too intense, not too passive'),
-  new RangeTableRow(11, 15, 'Active (+2)', 'The Character wants to make their Actions known'),
-  new RangeTableRow(16, 26, 'Aggressive (+4)', 'The Character acts with the utmost urgency and intensity'),
+  new RangeTableRow(6, 10, 'Moderate (0)', 'The Character acts in a moderate fashion, not too intense, not too passive.'),
+  new RangeTableRow(11, 15, 'Active (+2)', 'The Character wants to make their Actions known.'),
+  new RangeTableRow(16, 26, 'Aggressive (+4)', 'The Character acts with the utmost urgency and intensity.'),
+]);
+export const NpcAction1 = new RangeTable([
+  new RangeTableRow(1, 3, 'Theme Action', 'The NPC takes an Action in keeping with the current Theme, Disposition, and Activated. If the NPC was already performing an Action, the NPC stops that Action and switches to another, expected Action.'),
+  new RangeTableRow(4, 5, 'NPC Continues', 'The NPC will continue their current Action, or take it to the next level, whichever makes the most sense. If the NPC has not acted yet in this Scene, then treat the result as a Theme Action.'),
+  new RangeTableRow(6, 6, 'NPC Continues +2', 'The NPC will continue their current Action, or take it to the next level, whichever makes the most sense. Apply a +2 adjustment to their Disposition Score, representing a possible shift in their current attitude. If the NPC has not acted yet in this Scene, then treat the result as a Theme Action +2.'),
+  new RangeTableRow(7, 7, 'NPC Continues -2', 'The NPC will continue their current Action, or take it to the next level, whichever makes the most sense. Apply a -2 adjustment to their Disposition Score, representing a possible shift in their current attitude. If the NPC has not acted yet in this Scene, then treat the result as a Theme Action -2.'),
+  new RangeTableRow(8, 8, 'NPC Action', 'The NPC takes a new, maybe unexpected, Action determined by rolling on NPC Action Table 2 and applying the Disposition Modifier (if any) to that roll.'),
+  new RangeTableRow(9, 9, 'NPC Action -4', 'The NPC takes a new, maybe unexpected, Action determined by rolling on NPC Action Table 2, applying a -4 modifier and the Disposition Modifier (if any) to that roll.'),
+  new RangeTableRow(10, 10, 'NPC Action +4', 'The NPC takes a new, maybe unexpected, Action determined by rolling on NPC Action Table 2, applying a +4 modifier and the Disposition Modifier (if any) to that roll.'),
 ]);
