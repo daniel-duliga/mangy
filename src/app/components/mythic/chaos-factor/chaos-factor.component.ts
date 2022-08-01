@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DiceUtil } from 'src/app/features/dice/dice-util';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -7,7 +8,6 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./chaos-factor.component.scss']
 })
 export class ChaosFactorComponent implements OnInit {
-
   constructor(
     public dataService: DataService
   ) { }
@@ -20,6 +20,19 @@ export class ChaosFactorComponent implements OnInit {
       this.dataService.data.mythic.chaosFactor = 3;
     } else if (this.dataService.data.mythic.chaosFactor > 6) {
       this.dataService.data.mythic.chaosFactor = 6;
+    }
+  }
+
+  roll() {
+    const roll = DiceUtil.rollDiceFormula('1d10');
+    if (roll.sum <= this.dataService.data.mythic.chaosFactor) {
+      if (roll.sum % 2 === 0) {
+        this.dataService.data.log.add('Scene Interrupted', `[Roll against Chaos Factor] D: ${roll.sum}`);
+      } else {
+        this.dataService.data.log.add('Scene Altered', `[Roll against Chaos Factor] D: ${roll.sum}`);
+      }
+    } else {
+      this.dataService.data.log.add('Scene Unmodified', `[Roll against Chaos Factor] D: ${roll.sum}`);
     }
   }
 }

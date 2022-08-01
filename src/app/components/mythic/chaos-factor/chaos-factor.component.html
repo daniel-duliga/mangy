@@ -1,4 +1,4 @@
-<fieldset>
+<fieldset style="display: flex; flex-direction: column;">
     <legend><b>Chaos factor</b></legend>
     <div class="buttons-container">
         <button (click)="changeChaosFactor(-1)">-</button>
@@ -6,5 +6,8 @@
         <div><b>{{dataService.data.mythic.chaosFactor}}</b></div>
         &nbsp;
         <button (click)="changeChaosFactor(1)">+</button>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 5px;">
+        <button (click)="roll()">Roll against Chaos Factor</button>
     </div>
 </fieldset>
