@@ -1,169 +1,57 @@
 <fieldset class="descriptors">
     <legend><b>Behavior Check</b></legend>
-    <select [(ngModel)]="selectedNpcId" (ngModelChange)="selectedNpcChanged($event)">
-        <option *ngFor="let npc of dataService.data.mythic.npcs" value="{{npc.id}}">{{npc.name}}</option>
-    </select>
-    <br>
-    <div class="descriptor">
-        <input
-            type="checkbox"
-            title="Active"
-            id="identity_active"
-            [(ngModel)]="this.selectedNpc.identity.active"
-            (change)="selectedNpcUpdated()"
-        >
-        &nbsp;
-        <label for="identity_active">Identity</label>
-        &nbsp;
-        <input
-            type="text"
-            id="identity"
-            [(ngModel)]="selectedNpc.identity.value"
-            (change)="selectedNpcUpdated()"
-            title="This Descriptor says who this person is, what role they fulfill, and how they are primarily seen by others. This is usually big picture stuff like “police officer” or “bartender,” and is usually apparent from the start."
-        >
-        <button (click)="rollIdentity()">Roll</button>
-        &nbsp;
-        <div class="modifier" title="Modifiers">
-            <div>
-                <input
-                    type="radio"
-                    name="identity_modifier"
-                    id="identity_lowers"
-                    [(ngModel)]="selectedNpc.identity.modifier"
-                    value="lowers"
-                    (change)="selectedNpcUpdated()">
-                <label for="identity_lowers">Lowers</label>
-            </div>
-            <div>
-                <input
-                    type="radio"
-                    name="identity_modifier"
-                    id="identity_neutral"
-                    [(ngModel)]="selectedNpc.identity.modifier"
-                    value="neutral"
-                    (change)="selectedNpcUpdated()">
-                <label for="identity_neutral">Neutral</label>
-            </div>
-            <div>
-                <input 
-                    type="radio"
-                    name="identity_modifier"
-                    id="identity_intensifies"
-                    [(ngModel)]="selectedNpc.identity.modifier"
-                    value="intensifies"
-                    (change)="selectedNpcUpdated()">
-                <label for="identity_intensifies">Intensifies</label>
-            </div>
-        </div>
-    </div>
-    <div class="descriptor">
-        <input
-            type="checkbox"
-            title="Active"
-            id="personality_active"
-            [(ngModel)]="selectedNpc.personality.active"
-            (change)="selectedNpcUpdated()"
-        >
-        &nbsp;
-        <label for="personality_active">Personality</label>
-        &nbsp;
-        <input
-            type="text"
-            id="personality"
-            [(ngModel)]="selectedNpc.personality.value"
-            (change)="selectedNpcUpdated()"
-            title="This Descriptor gives the Character's most obvious personality trait. It could be anything from “Happy” to “Has anger management issues” to whatever you like. This should be fairly general and is used to summarize the NPC's personality overall. It doesn't mean that the Character is always exhibiting this personality, just that their personality tends to revert to this trait as a default."
-        >
-        <button (click)="rollPersonality()">Roll</button>
-        &nbsp;
-        <div class="modifier" title="Modifiers">
-            <div>
-                <input
-                    type="radio"
-                    name="personality_modifier"
-                    id="personality_lowers"
-                    [(ngModel)]="selectedNpc.personality.modifier"
-                    value="lowers"
-                    (change)="selectedNpcUpdated()">
-                <label for="personality_lowers">Lowers</label>
-            </div>
-            <div>
-                <input
-                    type="radio"
-                    name="personality_modifier"
-                    id="personality_neutral"
-                    [(ngModel)]="selectedNpc.personality.modifier"
-                    value="neutral"
-                    (change)="selectedNpcUpdated()">
-                <label for="personality_neutral">Neutral</label>
-            </div>
-            <div>
-                <input
-                    type="radio"
-                    name="personality_modifier"
-                    id="personality_intensifies"
-                    [(ngModel)]="selectedNpc.personality.modifier"
-                    value="intensifies"
-                    (change)="selectedNpcUpdated()">
-                <label for="personality_intensifies">Intensifies</label>
-            </div>
-        </div>
-    </div>
-    <div class="descriptor">
-        <input
-            type="checkbox"
-            title="Active"
-            id="activity_active"
-            [(ngModel)]="selectedNpc.activity.active"
-            (change)="selectedNpcUpdated()"
-        >
-        &nbsp;
-        <label for="activity_active">Activity</label>
-        &nbsp;
-        <input
-            type="text"
-            id="activity"
-            [(ngModel)]="selectedNpc.activity.value"
-            (change)="selectedNpcUpdated()"
-            title="This Descriptor indicates how this Character approaches most problems or how they go about most activities. This is similar to the Personality Trait, but it is focused on action instead of manner. This trait does not have to coincide with Personality."
-        >
-        <button (click)="rollActivity()">Roll</button>
-        &nbsp;
-        <div class="modifier" title="Modifiers">
-            <div>
-                <input
-                    type="radio"
-                    name="activity_modifier"
-                    id="activity_lowers"
-                    [(ngModel)]="selectedNpc.activity.modifier"
-                    value="lowers"
-                    (change)="selectedNpcUpdated()">
-                <label for="activity_lowers">Lowers</label>
-            </div>
-            <div>
-                <input
-                    type="radio"
-                    name="activity_modifier"
-                    id="activity_neutral"
-                    [(ngModel)]="selectedNpc.activity.modifier"
-                    value="neutral"
-                    (change)="selectedNpcUpdated()">
-                <label for="activity_neutral">Neutral</label>
-            </div>
-            <div>
-                <input
-                    type="radio"
-                    name="activity_modifier"
-                    id="activity_intensifies"
-                    [(ngModel)]="selectedNpc.activity.modifier"
-                    value="intensifies"
-                    (change)="selectedNpcUpdated()">
-                <label for="activity_intensifies">Intensifies</label>
-            </div>
-        </div>
+    
+    <!-- NPC select -->
+    <div style="display: flex;">
+        <select [(ngModel)]="selectedNpcId" (ngModelChange)="selectedNpcChanged($event)" style="width: 100%;">
+            <option *ngFor="let npc of dataService.data.mythic.npcs" value="{{npc.id}}">{{npc.name}}</option>
+        </select>
+        <button (click)="reset()">Reset</button>
     </div>
     <br>
+    
+    <!-- Descriptors -->
+    <app-descriptor
+        [name]="'Identity 1'"
+        [descriptor]="this.selectedNpc.identity1"
+        (onDescriptorUpdated)="descriptorUpdated('identity1', $event)"
+        (onDescriptorRolled)="rollDescriptor('identity1')"
+    ></app-descriptor>
+    <app-descriptor
+        [name]="'Identity 2'"
+        [descriptor]="this.selectedNpc.identity2"
+        (onDescriptorUpdated)="descriptorUpdated('identity2', $event)"
+        (onDescriptorRolled)="rollDescriptor('identity2')"
+    ></app-descriptor>
+    <br>
+    <app-descriptor
+        [name]="'Personality 1'"
+        [descriptor]="this.selectedNpc.personality1"
+        (onDescriptorUpdated)="descriptorUpdated('personality1', $event)"
+        (onDescriptorRolled)="rollDescriptor('personality1')"
+    ></app-descriptor>
+    <app-descriptor
+        [name]="'Personality 2'"
+        [descriptor]="this.selectedNpc.personality2"
+        (onDescriptorUpdated)="descriptorUpdated('personality2', $event)"
+        (onDescriptorRolled)="rollDescriptor('personality2')"
+    ></app-descriptor>
+    <br>
+    <app-descriptor
+        [name]="'Activity 1'"
+        [descriptor]="this.selectedNpc.activity1"
+        (onDescriptorUpdated)="descriptorUpdated('activity1', $event)"
+        (onDescriptorRolled)="rollDescriptor('activity1')"
+    ></app-descriptor>
+    <app-descriptor
+        [name]="'Activity 2'"
+        [descriptor]="this.selectedNpc.activity2"
+        (onDescriptorUpdated)="descriptorUpdated('activity2', $event)"
+        (onDescriptorRolled)="rollDescriptor('activity2')"
+    ></app-descriptor>
+    <br>
+    
+    <!-- Disposition & Action -->
     <div style="display: flex; justify-content: center;">
         <div style="display: flex; align-items: center;">
             <label for="disposition">Disposition</label>

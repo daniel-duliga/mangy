@@ -4,9 +4,12 @@ export class MythicNpcModel extends ListItem {
     constructor(
         id: string,
         name: string,
-        public identity: Descriptor = new Descriptor(),
-        public personality: Descriptor = new Descriptor(),
-        public activity: Descriptor = new Descriptor(),
+        public identity1: Descriptor = new Descriptor(),
+        public identity2: Descriptor = new Descriptor(),
+        public personality1: Descriptor = new Descriptor(),
+        public personality2: Descriptor = new Descriptor(),
+        public activity1: Descriptor = new Descriptor(),
+        public activity2: Descriptor = new Descriptor(),
         public disposition: number = 0,
     ) {
         super(id, name);
@@ -17,6 +20,8 @@ export class Descriptor {
     constructor(
         public value: string = '',
         public active: boolean = false,
-        public modifier: "lowers" | "neutral" | "intensifies" = "neutral"
+        public modifier: DescriptorModifier = "neutral"
     ) {}
 }
+
+export type DescriptorModifier = "lowers" | "neutral" | "intensifies";

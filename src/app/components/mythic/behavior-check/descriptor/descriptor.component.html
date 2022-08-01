@@ -1,0 +1,53 @@
+<div class="descriptor">
+    <input
+        type="checkbox"
+        title="Active"
+        [id]="'active' + name.replace(' ', '')"
+        [(ngModel)]="this.descriptor.active"
+        (change)="npcUpdated()"
+    >
+    &nbsp;
+    <label [for]="'active' + name.replace(' ', '')">{{ name }}&nbsp;</label>
+    &nbsp;
+    <input
+        type="text"
+        id="identity"
+        [(ngModel)]="descriptor.value"
+        (change)="npcUpdated()"
+        title="This Descriptor says who this person is, what role they fulfill, and how they are primarily seen by others. This is usually big picture stuff like “police officer” or “bartender,” and is usually apparent from the start."
+    >
+    <button (click)="roll()">Roll</button>
+    &nbsp;
+    <div class="modifier" title="Modifiers">
+        <div>
+            <input
+                type="radio"
+                [name]="'lowers_' + name.replace(' ', '')"
+                [id]="'lowers_' + name.replace(' ', '')"
+                [(ngModel)]="descriptor.modifier"
+                value="lowers"
+                (change)="npcUpdated()">
+            <label [for]="'lowers_' + name.replace(' ', '')">Lowers</label>
+        </div>
+        <div>
+            <input
+                type="radio"
+                [name]="'neutral_' + name.replace(' ', '')"
+                [id]="'neutral_' + name.replace(' ', '')"
+                [(ngModel)]="descriptor.modifier"
+                value="neutral"
+                (change)="npcUpdated()">
+            <label [for]="'neutral_' + name.replace(' ', '')">Neutral</label>
+        </div>
+        <div>
+            <input 
+                type="radio"
+                [name]="'intensifies_' + name.replace(' ', '')"
+                [id]="'intensifies_' + name.replace(' ', '')"
+                [(ngModel)]="descriptor.modifier"
+                value="intensifies"
+                (change)="npcUpdated()">
+            <label [for]="'intensifies_' + name.replace(' ', '')">Intensifies</label>
+        </div>
+    </div>
+</div>

@@ -14,6 +14,7 @@ import { LogComponent } from './components/log/log.component';
 import { ListComponent } from './components/mythic/list/list.component';
 import { GeneralComponent } from './components/general/general.component';
 import { BehaviorCheckComponent } from './components/mythic/behavior-check/behavior-check.component';
+import { DescriptorComponent } from './components/mythic/behavior-check/descriptor/descriptor.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { BehaviorCheckComponent } from './components/mythic/behavior-check/behav
     LogComponent,
     ListComponent,
     GeneralComponent,
-    BehaviorCheckComponent
+    BehaviorCheckComponent,
+    DescriptorComponent
   ],
   imports: [
     BrowserModule,
