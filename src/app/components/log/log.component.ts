@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DiceUtil } from 'src/app/features/dice/dice-util';
 import { DataService } from 'src/app/services/data.service';
 
 @Component({
@@ -15,8 +16,19 @@ export class LogComponent implements OnInit {
 
   ngOnInit(): void { }
 
-  addCustomLog() {
-    this.dataService.data.log.add(this.customLog);
+  rollDice(formula: string) {
+    this.customLog = formula;
+    this.log();
+  }
+
+  log() {
+    if (this.customLog.startsWith('/roll')) {
+      const formula  = this.customLog.replace('/roll ', '');
+      const dice = DiceUtil.rollDiceFormula(formula);
+      this.dataService.data.log.add(dice.sum.toString(), dice.details);
+    } else {
+      this.dataService.data.log.add(this.customLog);
+    }
     this.customLog = '';
   }
 }

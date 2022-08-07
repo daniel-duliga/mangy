@@ -1,6 +1,12 @@
 .container {
+    margin-top: 20px;
     display: flex;
 }
 .actions {
     width: 100%;
+}
+.log {
+    padding-left: 20px;
+    margin-left: 20px;
+    border-left: 1px solid lightgray;
 }

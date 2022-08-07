@@ -3,6 +3,7 @@
         "AMOD",
         "IMOD",
         "npcs",
-        "PMOD"
+        "PMOD",
+        "popperjs"
     ]
 }

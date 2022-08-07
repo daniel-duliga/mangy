@@ -1,7 +1,20 @@
 <div class="container">
   <div class="actions">
-    <app-general></app-general>
-    <app-mythic></app-mythic>
+    <nav ngbNav #nav="ngbNav" class="nav-tabs">
+      <ng-container ngbNavItem>
+        <a ngbNavLink>Mythic</a>
+        <ng-template ngbNavContent>
+          <app-mythic></app-mythic>      
+        </ng-template>
+      </ng-container>
+      <ng-container ngbNavItem>
+        <a ngbNavLink>Conjecture Games</a>
+        <ng-template ngbNavContent>
+          
+        </ng-template>
+      </ng-container>
+    </nav>
+    <div [ngbNavOutlet]="nav" class="mt-2"></div>
   </div>
   <div class="log">
     <app-log></app-log>

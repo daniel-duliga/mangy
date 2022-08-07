@@ -12,7 +12,6 @@ import { DetailCheckComponent } from './components/mythic/detail-check/detail-ch
 import { EventCheckComponent } from './components/mythic/event-check/event-check.component';
 import { LogComponent } from './components/log/log.component';
 import { ListComponent } from './components/mythic/list/list.component';
-import { GeneralComponent } from './components/general/general.component';
 import { BehaviorCheckComponent } from './components/mythic/behavior-check/behavior-check.component';
 import { DescriptorComponent } from './components/mythic/behavior-check/descriptor/descriptor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -28,7 +27,6 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EventCheckComponent,
     LogComponent,
     ListComponent,
-    GeneralComponent,
     BehaviorCheckComponent,
     DescriptorComponent
   ],
