@@ -15,6 +15,7 @@ import { ListComponent } from './components/mythic/list/list.component';
 import { GeneralComponent } from './components/general/general.component';
 import { BehaviorCheckComponent } from './components/mythic/behavior-check/behavior-check.component';
 import { DescriptorComponent } from './components/mythic/behavior-check/descriptor/descriptor.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DescriptorComponent } from './components/mythic/behavior-check/descript
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
