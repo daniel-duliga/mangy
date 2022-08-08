@@ -9,14 +9,9 @@
     font-family: 'Poppins';
 }
 
-fieldset {
-    padding: 5px;
-    margin: 5px;
+.section {
+    padding: 10px;
+    margin: 10px;
     border: 1px solid lightgray;
-    border-radius: 5px;
-}
-
-fieldset > legend {
-    font-size: 12pt;
-    text-align: center;
+    border-radius: 10px;
 }

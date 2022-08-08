@@ -1,43 +1,29 @@
-<div class="flex">
+<div class="mythic-container">
     <div>
-        <!-- <app-chaos-factor></app-chaos-factor> -->
-        <!-- <app-fate-check></app-fate-check> -->
+        <app-chaos-factor></app-chaos-factor>
+        <app-fate-check></app-fate-check>
+        <app-detail-check></app-detail-check>
+        <app-event-check></app-event-check>
     </div>
     <div>
-        <!-- <app-detail-check></app-detail-check> -->
-        <!-- <app-event-check></app-event-check> -->
+        <app-meaning-tables></app-meaning-tables>
+        <app-behavior-check></app-behavior-check>
     </div>
-    <!-- <app-behavior-check></app-behavior-check> -->
-    <!-- <app-meaning-tables></app-meaning-tables> -->
+    <div>
+        <app-list
+            [title]="'PCs'"
+            [items]="dataService.data.mythic.pcs"
+            (onItemsChanged)="dataService.data.mythic.pcs = $event"
+        ></app-list>
+        <app-list
+            [title]="'NPCs'"
+            [items]="dataService.data.mythic.npcs"
+            (onItemsChanged)="npcsChanged($event)"
+        ></app-list>
+        <app-list
+            [title]="'Threads'"
+            [items]="dataService.data.mythic.threads"
+            (onItemsChanged)="dataService.data.mythic.threads = $event"
+        ></app-list>
+    </div>
 </div>
-<!-- <div class="flex">
-    <fieldset>
-        <legend><b>Lists</b></legend>
-        <div class="flex">
-            <fieldset>
-                <legend>PCs</legend>
-                <app-list
-                    [title]="'PCs'"
-                    [items]="dataService.data.mythic.pcs"
-                    (onItemsChanged)="dataService.data.mythic.pcs = $event"
-                ></app-list>
-            </fieldset>
-            <fieldset>
-                <legend>Threads</legend>
-                <app-list
-                    [title]="'Threads'"
-                    [items]="dataService.data.mythic.threads"
-                    (onItemsChanged)="dataService.data.mythic.threads = $event"
-                ></app-list>
-            </fieldset>
-            <fieldset>
-                <legend>NPCs</legend>
-                <app-list
-                    [title]="'List'"
-                    [items]="dataService.data.mythic.npcs"
-                    (onItemsChanged)="npcsChanged($event)"
-                ></app-list>
-            </fieldset>
-        </div>
-    </fieldset>
-</div> -->

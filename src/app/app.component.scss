@@ -1,6 +1,7 @@
-.container {
-    margin-top: 20px;
-    display: flex;
+.main-container {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
 }
 .actions {
     width: 100%;

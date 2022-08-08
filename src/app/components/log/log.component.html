@@ -1,5 +1,5 @@
 <div style="display: flex; justify-content: space-between;">
-    <h3>Log</h3>
+    <h5>Log</h5>
     <div>
         <button class="btn btn-outline-danger btn-sm" (click)="dataService.data.log.clear()">Clear</button>
     </div>
@@ -25,6 +25,6 @@
     <div class="log-input-container">
         <input type="text" class="form-control log-input" (keyup.enter)="log()" [(ngModel)]="customLog">
         &nbsp;
-        <button class="btn btn-primary" (click)="log()">Log</button>
+        <button class="btn btn-primary btn-sm" (click)="log()">Log</button>
     </div>
 </div>

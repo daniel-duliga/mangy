@@ -1,9 +1,13 @@
-<fieldset>
-    <legend><b>Meaning Tables</b></legend>
+<div class="section">
+    <h5 style="text-align: center;">Meaning Tables</h5>
     <div class="flex">
-        <button (click)="descriptor1()">Descriptor 1</button>
-        <button (click)="descriptor2()">Descriptor 2</button>
-        <button (click)="action1()">Action 1</button>
-        <button (click)="action2()">Action 2</button>
+        <div style="display: grid; grid-template-columns: 1fr 1fr;">
+            <button class="btn btn-outline-primary btn-sm" (click)="descriptor1()">Descriptor 1</button>
+            <button class="btn btn-outline-primary btn-sm" (click)="action1()">Action 1</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr;">
+            <button class="btn btn-outline-primary btn-sm" (click)="descriptor2()">Descriptor 2</button>
+            <button class="btn btn-outline-primary btn-sm" (click)="action2()">Action 2</button>
+        </div>
     </div>
-</fieldset>
+</div>
