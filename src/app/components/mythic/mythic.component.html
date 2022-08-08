@@ -1,15 +1,5 @@
 <div class="mythic-container">
     <div>
-        <app-chaos-factor></app-chaos-factor>
-        <app-fate-check></app-fate-check>
-        <app-detail-check></app-detail-check>
-        <app-event-check></app-event-check>
-    </div>
-    <div>
-        <app-meaning-tables></app-meaning-tables>
-        <app-behavior-check></app-behavior-check>
-    </div>
-    <div>
         <app-list
             [title]="'PCs'"
             [items]="dataService.data.mythic.pcs"
@@ -25,5 +15,15 @@
             [items]="dataService.data.mythic.threads"
             (onItemsChanged)="dataService.data.mythic.threads = $event"
         ></app-list>
+    </div>
+    <div>
+        <app-meaning-tables></app-meaning-tables>
+        <app-behavior-check></app-behavior-check>
+    </div>
+    <div>
+        <app-chaos-factor></app-chaos-factor>
+        <app-fate-check></app-fate-check>
+        <app-detail-check></app-detail-check>
+        <app-event-check></app-event-check>
     </div>
 </div>
