@@ -29,7 +29,7 @@ export class AppModel {
         localStorage.setItem(AppModel.key, JSON.stringify(this, replacer));
 
         function replacer(key: string, value: any): any {
-            if (key === '_parent') {
+            if (key === '_parent' || key === 'onChanged') {
                 return null;
             } else {
                 return value;

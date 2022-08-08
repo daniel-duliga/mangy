@@ -4,7 +4,7 @@
         <button class="btn btn-outline-danger btn-sm" (click)="dataService.data.log.clear()">Clear</button>
     </div>
 </div>
-<div class="log-content">
+<div class="log-content" #logContent>
     <div *ngFor="let logEntry of dataService.data.log.getData()" [title]="logEntry.hint">
         <span class="timestamp">{{logEntry.timestamp | date:'YY-MM-dd HH:mm:ss'}}</span>
         &nbsp;
