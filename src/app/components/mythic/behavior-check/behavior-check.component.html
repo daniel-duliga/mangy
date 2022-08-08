@@ -12,10 +12,12 @@
     <br>
 
     <!-- Disposition & Action -->
-    <!-- <p style="text-align: center;">Disposition</p> -->
     <div style="display: flex; justify-content: center;">
         <div style="display: flex; align-items: center;">
             <!-- Value & Modifier buttons -->
+            <span>Disposition:</span>
+            &nbsp;
+            &nbsp;
             <button class="btn btn-outline-secondary btn-sm" (click)="changeDisposition(-2)">-2</button>
             <div>
                 &nbsp;
@@ -29,7 +31,7 @@
             &nbsp;
             <button class="btn btn-outline-success btn-sm" (click)="rollDisposition()">Roll</button>
             &nbsp;
-            <label [title]="dispositionDescriptorExplanation">= {{dispositionDescriptor}}</label>
+            <span [title]="dispositionDescriptorExplanation">= {{dispositionDescriptor}}</span>
             
             <!-- NPC Action -->
             &nbsp;
