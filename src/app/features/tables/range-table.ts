@@ -1,10 +1,16 @@
 export class RangeTable {
     constructor(
-        private rows: RangeTableRow[]
+        private _rows: RangeTableRow[]
     ) { }
 
+    
+    public get rows() : RangeTableRow[] {
+        return this._rows;
+    }
+    
+
     roll(dice: number): RangeTableRow {
-        return this.rows.filter(x => x.min <= dice && x.max >= dice)[0];
+        return this._rows.filter(x => x.min <= dice && x.max >= dice)[0];
     }
 }
 

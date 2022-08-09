@@ -1,10 +1,16 @@
 export class ListTable {
     constructor(
-        private rows: ListTableRow[]
+        private _rows: ListTableRow[]
     ) {}
 
+    
+    public get rows() : ListTableRow[] {
+        return this._rows;
+    }
+    
+
     roll(dice: number): ListTableRow {
-        return this.rows[dice - 1];
+        return this._rows[dice - 1];
     }
 }
 

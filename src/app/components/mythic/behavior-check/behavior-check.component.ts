@@ -122,10 +122,10 @@ export class BehaviorCheckComponent implements OnInit {
   rollDescriptor(descriptor: DescriptorType) {
     if (!this.selectedNpc) { return; }
 
-    const action1 = MeaningTables.Action1.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const action2 = MeaningTables.Action2.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const descriptor1 = MeaningTables.Descriptor1.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const descriptor2 = MeaningTables.Descriptor2.roll(DiceUtil.rollDiceFormula('1d100').sum);
+    const action1 = MeaningTables.Verb.roll(DiceUtil.rollDiceFormula('1d100').sum);
+    const action2 = MeaningTables.Noun.roll(DiceUtil.rollDiceFormula('1d100').sum);
+    const descriptor1 = MeaningTables.Adverb.roll(DiceUtil.rollDiceFormula('1d100').sum);
+    const descriptor2 = MeaningTables.Adjective.roll(DiceUtil.rollDiceFormula('1d100').sum);
 
     switch (descriptor) {
       case 'activity1': {

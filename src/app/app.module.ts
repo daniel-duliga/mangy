@@ -16,6 +16,8 @@ import { BehaviorCheckComponent } from './components/mythic/behavior-check/behav
 import { DescriptorComponent } from './components/mythic/behavior-check/descriptor/descriptor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConjectureComponent } from './components/conjecture/conjecture.component';
+import { NpcCreatorComponent } from './components/conjecture/npc-creator/npc-creator.component';
+import { NpcInteractionEmulatorComponent } from './components/conjecture/npc-interaction-emulator/npc-interaction-emulator.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { ConjectureComponent } from './components/conjecture/conjecture.componen
     BehaviorCheckComponent,
     DescriptorComponent,
     ConjectureComponent,
+    NpcCreatorComponent,
+    NpcInteractionEmulatorComponent,
   ],
   imports: [
     BrowserModule,

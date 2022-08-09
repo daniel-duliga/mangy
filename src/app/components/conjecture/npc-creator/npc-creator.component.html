@@ -1,0 +1,17 @@
+<div class="section" style="display: flex; flex-direction: column; justify-content: center; margin-top: 20px;">
+    <h5 style="text-align: center;">NPC Creator</h5>
+    <div style="display: flex; flex-direction: column;">
+        <label>Scene Randomness:</label>
+        <div style="display: grid; grid-template-columns: 3fr 1fr;">
+            <select id="sceneRandomness" [(ngModel)]="sceneRandomness">
+                <option value="Order">Order</option>
+                <option value="Calm">Calm</option>
+                <option value="Standard">Standard</option>
+                <option value="Disarray">Disarray</option>
+                <option value="Chaos">Chaos</option>
+            </select>
+            <button class="btn btn-outline-success btn-sm" (click)="rollSceneRandomness()">Roll</button>    
+        </div>
+    </div>
+    <button class="btn btn-outline-primary btn-sm" (click)="une()">Generate NPC</button>
+</div>

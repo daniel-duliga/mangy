@@ -4,7 +4,7 @@
     
     <!-- NPC select -->
     <div style="display: flex;">
-        <select class="form-control log-input form-control-sm" [(ngModel)]="selectedNpcId" (ngModelChange)="selectedNpcChanged($event)" style="width: 100%;">
+        <select [(ngModel)]="selectedNpcId" (ngModelChange)="selectedNpcChanged($event)" style="width: 100%;">
             <option *ngFor="let npc of dataService.data.mythic.npcs" value="{{npc.id}}">{{npc.name}}</option>
         </select>
         <button class="btn btn-outline-danger btn-sm" (click)="reset()">Reset</button>

@@ -18,20 +18,38 @@ export class MeaningTablesComponent implements OnInit {
 
   descriptor1() {
     const die = DiceUtil.rollDiceFormula('1d100');
-    this.dataService.data.log.add(MeaningTables.Descriptor1.roll(die.sum - 1).value, `[Descriptor 1] D: ${die.details}`);
+    this.dataService.data.log.add(MeaningTables.Adverb.roll(die.sum).value, `[Adverb] D: ${die.details}`);
   }
   descriptor2() {
     const die = DiceUtil.rollDiceFormula('1d100');
-    this.dataService.data.log.add(MeaningTables.Descriptor2.roll(die.sum - 1).value, `[Descriptor 2] D: ${die.details}`);
-    
+    this.dataService.data.log.add(MeaningTables.Adjective.roll(die.sum).value, `[Verb] D: ${die.details}`);
   }
+  descriptor1plus2() {
+    const dice1 = DiceUtil.rollDiceFormula('1d100');
+    const d1 = MeaningTables.Adverb.roll(dice1.sum);
+    
+    const dice2 = DiceUtil.rollDiceFormula('1d100');
+    const a1 = MeaningTables.Verb.roll(dice2.sum);
+    
+    this.dataService.data.log.add(`${d1.value} ${a1.value}`, `[Adverb + Verb] D: ${dice1.details}, ${dice2.details}`);
+  }
+
   action1() {
     const die = DiceUtil.rollDiceFormula('1d100');
-    this.dataService.data.log.add(MeaningTables.Action1.roll(die.sum - 1).value, `[Action 1] D: ${die.details}`);
+    this.dataService.data.log.add(MeaningTables.Verb.roll(die.sum).value, `[Adjective] D: ${die.details}`);
 
   }
   action2() {
     const die = DiceUtil.rollDiceFormula('1d100');
-    this.dataService.data.log.add(MeaningTables.Action2.roll(die.sum - 1).value, `[Action 2] D: ${die.details}`);
+    this.dataService.data.log.add(MeaningTables.Noun.roll(die.sum).value, `[Noun] D: ${die.details}`);
+  }
+  action1plus2() {
+    const dice1 = DiceUtil.rollDiceFormula('1d100');
+    const d2 = MeaningTables.Adjective.roll(dice1.sum);
+    
+    const dice2 = DiceUtil.rollDiceFormula('1d100');
+    const a2 = MeaningTables.Noun.roll(dice2.sum);
+    
+    this.dataService.data.log.add(`${d2.value} ${a2.value}`, `[Adjective + Noun] D: ${dice1.details}, ${dice2.details}`);
   }
 }

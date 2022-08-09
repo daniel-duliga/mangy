@@ -1,7 +1,7 @@
 import { ListTable, ListTableRow } from "src/app/features/tables/list-table";
 
 export default class MeaningTables {
-    public static Descriptor1 = new ListTable([
+    public static Adverb = new ListTable([
         new ListTableRow('Abnormally'),
         new ListTableRow('Adventurously'),
         new ListTableRow('Aggressively'),
@@ -103,7 +103,7 @@ export default class MeaningTables {
         new ListTableRow('Wildly'),
         new ListTableRow('Yieldingly'),
     ]);
-    public static Descriptor2 = new ListTable([
+    public static Adjective = new ListTable([
         new ListTableRow('Abandoned'),
         new ListTableRow('Abnormal'),
         new ListTableRow('Amusing'),
@@ -205,7 +205,7 @@ export default class MeaningTables {
         new ListTableRow('Weak'),
         new ListTableRow('Young'),
     ]);
-    public static Action1 = new ListTable([
+    public static Verb = new ListTable([
         new ListTableRow('Attainment'),
         new ListTableRow('Starting'),
         new ListTableRow('Neglect'),
@@ -307,7 +307,7 @@ export default class MeaningTables {
         new ListTableRow('Oppress'),
         new ListTableRow('Change'),
     ]);
-    public static Action2 = new ListTable([
+    public static Noun = new ListTable([
         new ListTableRow('Goals'),
         new ListTableRow('Dreams'),
         new ListTableRow('Environment'),
