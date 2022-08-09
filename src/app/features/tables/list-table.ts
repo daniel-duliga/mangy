@@ -4,7 +4,7 @@ export class ListTable {
     ) {}
 
     roll(dice: number): ListTableRow {
-        return this.rows[dice];
+        return this.rows[dice - 1];
     }
 }
 

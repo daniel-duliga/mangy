@@ -15,6 +15,7 @@ import { ListComponent } from './components/mythic/list/list.component';
 import { BehaviorCheckComponent } from './components/mythic/behavior-check/behavior-check.component';
 import { DescriptorComponent } from './components/mythic/behavior-check/descriptor/descriptor.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConjectureComponent } from './components/conjecture/conjecture.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LogComponent,
     ListComponent,
     BehaviorCheckComponent,
-    DescriptorComponent
+    DescriptorComponent,
+    ConjectureComponent,
   ],
   imports: [
     BrowserModule,
