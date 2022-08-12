@@ -1,10 +1,10 @@
 .main-container {
     margin: 20px;
-    display: grid;
-    grid-template-columns: 4fr 1fr;
+    display: flex;
 }
 .actions {
-    width: 100%;
+    display: flex;
+    overflow: auto;
 }
 .log {
     padding-left: 20px;
