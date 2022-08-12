@@ -9,6 +9,11 @@
     font-family: 'Poppins';
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 .section {
     padding: 10px;
     margin: 10px;

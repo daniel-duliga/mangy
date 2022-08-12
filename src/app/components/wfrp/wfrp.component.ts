@@ -10,7 +10,7 @@ import { DataService } from 'src/app/services/data.service';
   styleUrls: ['./wfrp.component.scss']
 })
 export class WfrpComponent implements OnInit {
-  race: 'human' | 'dwarf' | 'elf' | 'halfling' | 'gnome' = 'human';
+  race: 'human' | 'dwarf/gnome' | 'elf' | 'halfling' = 'human';
   gender: 'male' | 'female' = 'male';
   status: 'commoner' | 'noble' = 'commoner';
 
@@ -23,14 +23,16 @@ export class WfrpComponent implements OnInit {
   rollName() {
     if (this.race === 'human') {
       this.rollHumanName();
-    } else if (this.race === 'dwarf') {
+    } else if (this.race === 'dwarf/gnome') {
       this.rollDwarfName();
     } else if (this.race === 'elf') {
       this.rollElfName();
-    } else if (this.race === 'gnome') {
-
     } else if (this.race === 'halfling') {
-
+      if (this.gender === 'male') {
+        const forename = tables.names.human.forenames.male.roll(DiceUtil.rollDice('1d1000').sum).value;
+        const surname = tables.names.human.forenames.male.roll(DiceUtil.rollDice('1d1000').sum).value;
+        this.dataService.data.log.add(`${forename} ${surname}`);
+      }
     }
   }
 

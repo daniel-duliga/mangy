@@ -1,39 +1,41 @@
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr;">
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;">
     <div class="section">
         <h5>Names</h5>
-        <div style="display: flex; flex-direction: column;">
+        <div class="flex-column">
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                 <input type="radio" class="btn-check btn-sm" name="race" value="human" [(ngModel)]="race" id="raceHuman" checked>
-                <label class="btn btn-outline-primary btn-sm" for="raceHuman">Human</label>
-                <input type="radio" class="btn-check btn-sm" name="race" value="dwarf" [(ngModel)]="race" id="raceDwarf">
-                <label class="btn btn-outline-primary btn-sm" for="raceDwarf">Dwarf</label>
+                <label class="btn btn-outline-secondary btn-sm" for="raceHuman">Human</label>
+                <input type="radio" class="btn-check btn-sm" name="race" value="dwarf/gnome" [(ngModel)]="race" id="raceDwarfGnome">
+                <label class="btn btn-outline-secondary btn-sm" for="raceDwarfGnome">Dwarf / Gnome</label>
                 <input type="radio" class="btn-check btn-sm" name="race" value="elf" [(ngModel)]="race" id="raceElf">
-                <label class="btn btn-outline-primary btn-sm" for="raceElf">Elf</label>
+                <label class="btn btn-outline-secondary btn-sm" for="raceElf">Elf</label>
                 <input type="radio" class="btn-check btn-sm" name="race" value="halfling" [(ngModel)]="race" id="raceHalfling">
-                <label class="btn btn-outline-primary btn-sm" for="raceHalfling">Halfling</label>
-                <input type="radio" class="btn-check btn-sm" name="race" value="gnome" [(ngModel)]="race" id="raceGnome">
-                <label class="btn btn-outline-primary btn-sm" for="raceGnome">Gnome</label>
+                <label class="btn btn-outline-secondary btn-sm" for="raceHalfling">Halfling</label>
             </div>
             <br>
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check btn-sm" name="gender" value="male" [(ngModel)]="gender" id="genderMale" checked>
-                <label class="btn btn-outline-primary btn-sm" for="genderMale">Male</label>
-                <input type="radio" class="btn-check btn-sm" name="gender" value="female" [(ngModel)]="gender" id="genderFemale">
-                <label class="btn btn-outline-primary btn-sm" for="genderFemale">Female</label>
+            <div *ngIf="race !== 'elf'" class="flex-column">
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check btn-sm" name="gender" value="male" [(ngModel)]="gender" id="genderMale" checked>
+                    <label class="btn btn-outline-secondary btn-sm" for="genderMale">Male</label>
+                    <input type="radio" class="btn-check btn-sm" name="gender" value="female" [(ngModel)]="gender" id="genderFemale">
+                    <label class="btn btn-outline-secondary btn-sm" for="genderFemale">Female</label>
+                </div>
+                <br>
             </div>
-            <br>
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check btn-sm" name="status" value="commoner" [(ngModel)]="status" id="statusCommoner" checked>
-                <label class="btn btn-outline-primary btn-sm" for="statusCommoner">Commoner</label>
-                <input type="radio" class="btn-check btn-sm" name="status" value="noble" [(ngModel)]="status" id="statusNoble">
-                <label class="btn btn-outline-primary btn-sm" for="statusNoble">Noble</label>
+            <div *ngIf="race === 'human'" class="flex-column">
+                <div class="btn-group flex-column" role="group" aria-label="Basic radio toggle button group">
+                    <input type="radio" class="btn-check btn-sm" name="status" value="commoner" [(ngModel)]="status" id="statusCommoner" checked>
+                    <label class="btn btn-outline-secondary btn-sm" for="statusCommoner">Commoner</label>
+                    <input type="radio" class="btn-check btn-sm" name="status" value="noble" [(ngModel)]="status" id="statusNoble">
+                    <label class="btn btn-outline-secondary btn-sm" for="statusNoble">Noble</label>
+                </div>
+                <br>
             </div>
-            <br>
             <button class="btn btn-outline-primary btn-sm" (click)="rollName()">Generate Name</button>
         </div>
         <br>
         <h5>Settlements</h5>
-        <div style="display: flex; flex-direction: column;">
+        <div class="flex-column">
             <button class="btn btn-outline-primary btn-sm" (click)="rollHumanSettlement()">Human</button>
         </div>
     </div>
