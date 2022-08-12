@@ -94,7 +94,7 @@ export class NpcInteractionEmulatorComponent implements OnInit {
     }
     const focus = npcFocus.roll(DiceUtil.rollDice('1d100').sum);
 
-    this.dataService.data.log.add(`The ${this.bearing} NPC speaks of ${bearingSecondary?.value} regarding the PC's ${focus.value}.`);
+    this.dataService.data.log.add(`The ${this.bearing.toLowerCase()} NPC speaks of ${bearingSecondary?.value} regarding the PC's ${focus.value}.`);
   }
 }
 
