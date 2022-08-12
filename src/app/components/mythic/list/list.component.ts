@@ -61,7 +61,7 @@ export class ListComponent implements OnInit {
   }
 
   roll() {
-    const dice = DiceUtil.rollDiceFormula(`1d${this.items.length}`);
+    const dice = DiceUtil.rollDice(`1d${this.items.length}`);
     const result = this.items[dice.sum - 1];
     if (result) {
       this.dataService.data.log.add(result.name, `[List Roll: ${this.title}] D: ${dice.sum}`);

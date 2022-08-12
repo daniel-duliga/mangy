@@ -39,36 +39,36 @@ export class NpcInteractionEmulatorComponent implements OnInit {
   ngOnInit(): void { }
 
   rollRelationship() {
-    this.relationship = this.npcRelationship.roll(DiceUtil.rollDiceFormula('1d7').sum).value;
+    this.relationship = this.npcRelationship.roll(DiceUtil.rollDice('1d7').sum).value;
   }
 
   rollBearing() {
-    this.bearing = this.npcBearing.roll(DiceUtil.rollDiceFormula('1d100').sum).value;
+    this.bearing = this.npcBearing.roll(DiceUtil.rollDice('1d100').sum).value;
   }
 
   rollConversationMood() {
     let message = '';
     if (this.relationship === 'Loved') {
-      const mood = npcConversationMood_Loved.roll(DiceUtil.rollDiceFormula('1d100').sum);
-      message = `The NPC, who usually loves the party, is ${mood.value} right now`;
+      const mood = npcConversationMood_Loved.roll(DiceUtil.rollDice('1d100').sum);
+      message = `The NPC, who usually loves the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Friendly') {
-      const mood = npcConversationMood_Friendly.roll(DiceUtil.rollDiceFormula('1d100').sum);
-      message = `The NPC, who is usually friendly with the party, is ${mood.value} right now`;
+      const mood = npcConversationMood_Friendly.roll(DiceUtil.rollDice('1d100').sum);
+      message = `The NPC, who is usually friendly with the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Peaceful') {
-      const mood = npcConversationMood_Peaceful.roll(DiceUtil.rollDiceFormula('1d100').sum);
-      message = `The NPC, who is usually peaceful towards the party, is ${mood.value} right now`;
+      const mood = npcConversationMood_Peaceful.roll(DiceUtil.rollDice('1d100').sum);
+      message = `The NPC, who is usually peaceful towards the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Neutral') {
-      const mood = npcConversationMood_Neutral.roll(DiceUtil.rollDiceFormula('1d100').sum);
-      message = `The NPC, who is usually neutral towards the party, is ${mood.value} right now`;
+      const mood = npcConversationMood_Neutral.roll(DiceUtil.rollDice('1d100').sum);
+      message = `The NPC, who is usually neutral towards the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Distrustful') {
-      const mood = npcConversationMood_Distrustful.roll(DiceUtil.rollDiceFormula('1d100').sum);
-      message = `The NPC, who is usually distrustful of the party, is ${mood.value} right now`;
+      const mood = npcConversationMood_Distrustful.roll(DiceUtil.rollDice('1d100').sum);
+      message = `The NPC, who is usually distrustful of the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Hostile') {
-      const mood = npcConversationMood_Hostile.roll(DiceUtil.rollDiceFormula('1d100').sum);
-      message = `The NPC, who is usually hostile towards the party, is ${mood.value} right now`;
+      const mood = npcConversationMood_Hostile.roll(DiceUtil.rollDice('1d100').sum);
+      message = `The NPC, who is usually hostile towards the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Hated') {
-      const mood = npcConversationMood_Hated.roll(DiceUtil.rollDiceFormula('1d100').sum);
-      message = `The NPC, who usually hates the party, is ${mood.value} right now`;
+      const mood = npcConversationMood_Hated.roll(DiceUtil.rollDice('1d100').sum);
+      message = `The NPC, who usually hates the party, is ${mood.value} right now.`;
     }
     this.dataService.data.log.add(message);
   }
@@ -76,25 +76,25 @@ export class NpcInteractionEmulatorComponent implements OnInit {
   rollInteraction() {
     let bearingSecondary: RangeTableRow | null = null;
     if (this.bearing === 'Scheming') {
-      bearingSecondary = npcBearing_Scheming.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      bearingSecondary = npcBearing_Scheming.roll(DiceUtil.rollDice('1d100').sum);
     } else if (this.bearing === 'Insane') {
-      bearingSecondary = npcBearing_Insane.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      bearingSecondary = npcBearing_Insane.roll(DiceUtil.rollDice('1d100').sum);
     } else if (this.bearing === 'Friendly') {
-      bearingSecondary = npcBearing_Friendly.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      bearingSecondary = npcBearing_Friendly.roll(DiceUtil.rollDice('1d100').sum);
     } else if (this.bearing === 'Hostile') {
-      bearingSecondary = npcBearing_Hostile.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      bearingSecondary = npcBearing_Hostile.roll(DiceUtil.rollDice('1d100').sum);
     } else if (this.bearing === 'Inquisitive') {
-      bearingSecondary = npcBearing_Inquisitive.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      bearingSecondary = npcBearing_Inquisitive.roll(DiceUtil.rollDice('1d100').sum);
     } else if (this.bearing === 'Knowing') {
-      bearingSecondary = npcBearing_Knowing.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      bearingSecondary = npcBearing_Knowing.roll(DiceUtil.rollDice('1d100').sum);
     } else if (this.bearing === 'Mysterious') {
-      bearingSecondary = npcBearing_Mysterious.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      bearingSecondary = npcBearing_Mysterious.roll(DiceUtil.rollDice('1d100').sum);
     } else if (this.bearing === 'Prejudiced') {
-      bearingSecondary = npcBearing_Prejudiced.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      bearingSecondary = npcBearing_Prejudiced.roll(DiceUtil.rollDice('1d100').sum);
     }
-    const focus = npcFocus.roll(DiceUtil.rollDiceFormula('1d100').sum);
+    const focus = npcFocus.roll(DiceUtil.rollDice('1d100').sum);
 
-    this.dataService.data.log.add(`The ${this.bearing} NPC speaks of ${bearingSecondary?.value} regarding the PC's ${focus.value}`);
+    this.dataService.data.log.add(`The ${this.bearing} NPC speaks of ${bearingSecondary?.value} regarding the PC's ${focus.value}.`);
   }
 }
 

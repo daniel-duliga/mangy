@@ -2,7 +2,7 @@ import { DiceWrapper } from "./dice-wrapper"
 
 export class DiceUtil {
 
-    static rollDiceFormula(formula: string): DiceWrapper {
+    static rollDice(formula: string): DiceWrapper {
         const operatorsRegEx = /[+]/g
 
         let diceArray = formula.split(operatorsRegEx)
@@ -19,7 +19,7 @@ export class DiceUtil {
                 if (formulaParts.length > 0) {
                     const count = +formulaParts[0]
                     const dice = formulaParts.length > 1 ? +formulaParts[1] : 1
-                    const diceRolls = DiceUtil.rollDice(count, dice)
+                    const diceRolls = DiceUtil.innerRollDice(count, dice)
                     result.sum += diceRolls.reduce((sum, current) => sum + current);
                     result.rolls[formulaPart] = diceRolls;
                 }
@@ -29,7 +29,7 @@ export class DiceUtil {
         return result;
     }
 
-    static rollDice(count: number, dice: number): number[] {
+    private static innerRollDice(count: number, dice: number): number[] {
         let result: number[] = [];
         if (dice === 1) {
             result.push(+count);

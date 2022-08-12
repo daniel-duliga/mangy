@@ -24,7 +24,7 @@ export class ChaosFactorComponent implements OnInit {
   }
 
   roll() {
-    const roll = DiceUtil.rollDiceFormula('1d10');
+    const roll = DiceUtil.rollDice('1d10');
     if (roll.sum <= this.dataService.data.mythic.chaosFactor) {
       if (roll.sum % 2 === 0) {
         this.dataService.data.log.add('Scene Interrupted', `[Roll against Chaos Factor] D: ${roll.sum}`);

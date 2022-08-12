@@ -19,33 +19,33 @@ export class NpcCreatorComponent implements OnInit {
   ngOnInit(): void { }
 
   rollSceneRandomness() {
-    const randomness = sceneRandomness.roll(DiceUtil.rollDiceFormula('1d5').sum);
+    const randomness = sceneRandomness.roll(DiceUtil.rollDice('1d5').sum);
     this.sceneRandomness = randomness.value;
   }
 
   une() {
-    const modifier = npcModifier.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const noun = npcNoun.roll(DiceUtil.rollDiceFormula('1d100').sum);
+    const modifier = npcModifier.roll(DiceUtil.rollDice('1d100').sum);
+    const noun = npcNoun.roll(DiceUtil.rollDice('1d100').sum);
     
     let powerLevel: RangeTableRow | null = null;
     if (this.sceneRandomness === 'Order') {
-      powerLevel = powerLevel_Order.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      powerLevel = powerLevel_Order.roll(DiceUtil.rollDice('1d100').sum);
     } else if (this.sceneRandomness === 'Calm') {
-      powerLevel = powerLevel_Calm.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      powerLevel = powerLevel_Calm.roll(DiceUtil.rollDice('1d100').sum);
     } else if (this.sceneRandomness === 'Standard') {
-      powerLevel = powerLevel_Standard.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      powerLevel = powerLevel_Standard.roll(DiceUtil.rollDice('1d100').sum);
     } else if (this.sceneRandomness === 'Disarray') {
-      powerLevel = powerLevel_Disarray.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      powerLevel = powerLevel_Disarray.roll(DiceUtil.rollDice('1d100').sum);
     } else if (this.sceneRandomness === 'Chaos') {
-      powerLevel = powerLevel_Chaos.roll(DiceUtil.rollDiceFormula('1d100').sum);
+      powerLevel = powerLevel_Chaos.roll(DiceUtil.rollDice('1d100').sum);
     }
 
-    const motivationVerb1 = npcMotivationVerb.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const motivationVerb2 = npcMotivationVerb.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const motivationVerb3 = npcMotivationVerb.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const motivationNoun1 = npcMotivationNoun.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const motivationNoun2 = npcMotivationNoun.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const motivationNoun3 = npcMotivationNoun.roll(DiceUtil.rollDiceFormula('1d100').sum);
+    const motivationVerb1 = npcMotivationVerb.roll(DiceUtil.rollDice('1d100').sum);
+    const motivationVerb2 = npcMotivationVerb.roll(DiceUtil.rollDice('1d100').sum);
+    const motivationVerb3 = npcMotivationVerb.roll(DiceUtil.rollDice('1d100').sum);
+    const motivationNoun1 = npcMotivationNoun.roll(DiceUtil.rollDice('1d100').sum);
+    const motivationNoun2 = npcMotivationNoun.roll(DiceUtil.rollDice('1d100').sum);
+    const motivationNoun3 = npcMotivationNoun.roll(DiceUtil.rollDice('1d100').sum);
 
     let message = '';
     if (['a', 'e', 'i', 'o', 'u', 'w'].includes(modifier.value[0])) {

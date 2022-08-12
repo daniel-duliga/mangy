@@ -20,5 +20,6 @@ export class RangeTableRow {
         public max: number,
         public value: string,
         public notes: string = '',
+        public innerTable: RangeTable | null = null,
     ) { }
 }

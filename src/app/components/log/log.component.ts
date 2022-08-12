@@ -38,7 +38,7 @@ export class LogComponent implements OnInit, OnDestroy, AfterViewInit {
   log() {
     if (this.customLog.startsWith('/roll')) {
       const formula = this.customLog.replace('/roll ', '');
-      const dice = DiceUtil.rollDiceFormula(formula);
+      const dice = DiceUtil.rollDice(formula);
       this.dataService.data.log.add(dice.sum.toString(), dice.details);
     } else {
       this.dataService.data.log.add(this.customLog);

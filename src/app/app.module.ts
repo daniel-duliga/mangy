@@ -18,6 +18,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConjectureComponent } from './components/conjecture/conjecture.component';
 import { NpcCreatorComponent } from './components/conjecture/npc-creator/npc-creator.component';
 import { NpcInteractionEmulatorComponent } from './components/conjecture/npc-interaction-emulator/npc-interaction-emulator.component';
+import { WfrpComponent } from './components/wfrp/wfrp.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { NpcInteractionEmulatorComponent } from './components/conjecture/npc-int
     ConjectureComponent,
     NpcCreatorComponent,
     NpcInteractionEmulatorComponent,
+    WfrpComponent,
   ],
   imports: [
     BrowserModule,

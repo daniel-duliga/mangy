@@ -122,10 +122,10 @@ export class BehaviorCheckComponent implements OnInit {
   rollDescriptor(descriptor: DescriptorType) {
     if (!this.selectedNpc) { return; }
 
-    const action1 = MeaningTables.Verb.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const action2 = MeaningTables.Noun.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const descriptor1 = MeaningTables.Adverb.roll(DiceUtil.rollDiceFormula('1d100').sum);
-    const descriptor2 = MeaningTables.Adjective.roll(DiceUtil.rollDiceFormula('1d100').sum);
+    const action1 = MeaningTables.Verb.roll(DiceUtil.rollDice('1d100').sum);
+    const action2 = MeaningTables.Noun.roll(DiceUtil.rollDice('1d100').sum);
+    const descriptor1 = MeaningTables.Adverb.roll(DiceUtil.rollDice('1d100').sum);
+    const descriptor2 = MeaningTables.Adjective.roll(DiceUtil.rollDice('1d100').sum);
 
     switch (descriptor) {
       case 'activity1': {
@@ -159,7 +159,7 @@ export class BehaviorCheckComponent implements OnInit {
   }
 
   rollDisposition() {
-    const roll = DiceUtil.rollDiceFormula('1d10').sum + DiceUtil.rollDiceFormula('1d10').sum;
+    const roll = DiceUtil.rollDice('1d10').sum + DiceUtil.rollDice('1d10').sum;
     let identityMod = 0, personalityMod = 0, activityMod = 0;
     
     if (this.selectedNpc.identity1.active && this.selectedNpc.identity1.modifier !== 'neutral') {
@@ -200,7 +200,7 @@ export class BehaviorCheckComponent implements OnInit {
   npcAction() {
     // NPC Action 1
 
-    const npcAction1Roll = DiceUtil.rollDiceFormula('1d10');
+    const npcAction1Roll = DiceUtil.rollDice('1d10');
     const npcAction1Result = NpcAction1.roll(npcAction1Roll.sum);
 
     if (npcAction1Result.value === 'NPC Continues +2') {
@@ -227,7 +227,7 @@ export class BehaviorCheckComponent implements OnInit {
       npcAction1Result.value === 'NPC Action -4' ||
       npcAction1Result.value === 'NPC Action +4'
     ) {
-      const npcAction2Roll = DiceUtil.rollDiceFormula('1d20');
+      const npcAction2Roll = DiceUtil.rollDice('1d20');
       const npcAction2Result = NpcAction2.roll(npcAction2Roll.sum);
 
       this.dataService.data.log.add(

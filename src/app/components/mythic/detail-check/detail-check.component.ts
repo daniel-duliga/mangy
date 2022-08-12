@@ -19,8 +19,8 @@ export class DetailCheckComponent implements OnInit {
   ngOnInit(): void { }
 
   detailCheck() {
-    const die1 = DiceUtil.rollDiceFormula("1d10");
-    const die2 = DiceUtil.rollDiceFormula("1d10");
+    const die1 = DiceUtil.rollDice("1d10");
+    const die2 = DiceUtil.rollDice("1d10");
     let dieResult = die1.sum + die2.sum;
 
     let modifier = 0;

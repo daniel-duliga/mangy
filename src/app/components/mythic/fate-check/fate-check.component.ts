@@ -31,12 +31,12 @@ export class FateCheckComponent implements OnInit {
       }
     }
 
-    const fateDie1 = DiceUtil.rollDiceFormula('1d10');
-    const fateDie2 = DiceUtil.rollDiceFormula('1d10');
+    const fateDie1 = DiceUtil.rollDice('1d10');
+    const fateDie2 = DiceUtil.rollDice('1d10');
     const rollResult = fateDie1.sum + fateDie2.sum + modifier;
     const result = rollResult > 11;
 
-    const chaosDie = DiceUtil.rollDiceFormula('1d6');
+    const chaosDie = DiceUtil.rollDice('1d6');
     let exceptional = false;
     let random = false;
     if (chaosDie.sum <= this.dataService.data.mythic.chaosFactor) {

@@ -24,37 +24,37 @@ export class EventCheckComponent implements OnInit {
   ngOnInit(): void { }
 
   eventCheckStandard() {
-    const dice = DiceUtil.rollDiceFormula('1d100');
+    const dice = DiceUtil.rollDice('1d100');
     const result = EventFocusStandard.roll(dice.sum);
     this.addToLog(result.value, "Standard", dice.sum, result.notes);
   }
   eventCheckHorror() {
-    const dice = DiceUtil.rollDiceFormula('1d100');
+    const dice = DiceUtil.rollDice('1d100');
     const result = EventFocusHorror.roll(dice.sum);
     this.addToLog(result.value, "Horror", dice.sum, result.notes);
   }
   eventCheckActionAdventure() {
-    const dice = DiceUtil.rollDiceFormula('1d100');
+    const dice = DiceUtil.rollDice('1d100');
     const result = EventFocusActionAdventure.roll(dice.sum);
     this.addToLog(result.value, "Action Adventure", dice.sum, result.notes);
   }
   eventCheckMystery() {
-    const dice = DiceUtil.rollDiceFormula('1d100');
+    const dice = DiceUtil.rollDice('1d100');
     const result = EventFocusMystery.roll(dice.sum);
     this.addToLog(result.value, "Mystery", dice.sum, result.notes);
   }
   eventCheckSocial() {
-    const dice = DiceUtil.rollDiceFormula('1d100');
+    const dice = DiceUtil.rollDice('1d100');
     const result = EventFocusSocial.roll(dice.sum);
     this.addToLog(result.value, "Social", dice.sum, result.notes);
   }
   eventCheckPersonal() {
-    const dice = DiceUtil.rollDiceFormula('1d100');
+    const dice = DiceUtil.rollDice('1d100');
     const result = EventFocusPersonal.roll(dice.sum);
     this.addToLog(result.value, "Personal", dice.sum, result.notes);
   }
   eventCheckEpic() {
-    const dice = DiceUtil.rollDiceFormula('1d100');
+    const dice = DiceUtil.rollDice('1d100');
     const result = EventFocusEpic.roll(dice.sum);
     this.addToLog(result.value, "Epic", dice.sum, result.notes);
   }
