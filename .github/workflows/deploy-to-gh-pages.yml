@@ -26,4 +26,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm install
-          npm run ng -- deploy
+          npm run ng -- deploy --base-href=/mangy/ --name="daniel-duliga" --email=daniel.vasile.duliga@gmail.com
