@@ -208,7 +208,7 @@ const npcBearing_Hostile = new RangeTable([
   new RangeTableRow(61, 70, ' resentment'),
   new RangeTableRow(71, 80, ' submission'),
   new RangeTableRow(81, 90, ' injury'),
-  new RangeTableRow(91, 100, ' destruction'),
+  new RangeTableRow(91, 100, 'destruction'),
 ]);
 const npcBearing_Inquisitive = new RangeTable([
   new RangeTableRow(1, 10, 'questions'),
@@ -285,7 +285,7 @@ const npcFocus = new RangeTable([
   new RangeTableRow(70, 72, 'recent scene'),
   new RangeTableRow(73, 75, 'community'),
   new RangeTableRow(76, 78, 'treasure'),
-  new RangeTableRow(79, 81, 'the character'),
+  new RangeTableRow(79, 81, 'character'),
   new RangeTableRow(82, 84, 'current story'),
   new RangeTableRow(85, 87, 'family'),
   new RangeTableRow(88, 90, 'power'),
