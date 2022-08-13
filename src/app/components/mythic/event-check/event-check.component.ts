@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
-import { DataService } from 'src/app/services/data.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { 
   EventFocusActionAdventure, 
   EventFocusEpic, 
@@ -18,47 +18,40 @@ import {
 })
 export class EventCheckComponent implements OnInit {
   constructor(
-    private dataService: DataService
+    private dataService: StorageService
   ) { }
 
   ngOnInit(): void { }
 
   eventCheckStandard() {
-    const dice = DiceUtil.rollDice('1d100');
-    const result = EventFocusStandard.roll(dice.sum);
-    this.addToLog(result.value, "Standard", dice.sum, result.notes);
+    const result = EventFocusStandard.roll();
+    this.addToLog(result.value, "Standard", result.notes);
   }
   eventCheckHorror() {
-    const dice = DiceUtil.rollDice('1d100');
-    const result = EventFocusHorror.roll(dice.sum);
-    this.addToLog(result.value, "Horror", dice.sum, result.notes);
+    const result = EventFocusHorror.roll();
+    this.addToLog(result.value, "Horror", result.notes);
   }
   eventCheckActionAdventure() {
-    const dice = DiceUtil.rollDice('1d100');
-    const result = EventFocusActionAdventure.roll(dice.sum);
-    this.addToLog(result.value, "Action Adventure", dice.sum, result.notes);
+    const result = EventFocusActionAdventure.roll();
+    this.addToLog(result.value, "Action Adventure", result.notes);
   }
   eventCheckMystery() {
-    const dice = DiceUtil.rollDice('1d100');
-    const result = EventFocusMystery.roll(dice.sum);
-    this.addToLog(result.value, "Mystery", dice.sum, result.notes);
+    const result = EventFocusMystery.roll();
+    this.addToLog(result.value, "Mystery", result.notes);
   }
   eventCheckSocial() {
-    const dice = DiceUtil.rollDice('1d100');
-    const result = EventFocusSocial.roll(dice.sum);
-    this.addToLog(result.value, "Social", dice.sum, result.notes);
+    const result = EventFocusSocial.roll();
+    this.addToLog(result.value, "Social", result.notes);
   }
   eventCheckPersonal() {
-    const dice = DiceUtil.rollDice('1d100');
-    const result = EventFocusPersonal.roll(dice.sum);
-    this.addToLog(result.value, "Personal", dice.sum, result.notes);
+    const result = EventFocusPersonal.roll();
+    this.addToLog(result.value, "Personal", result.notes);
   }
   eventCheckEpic() {
-    const dice = DiceUtil.rollDice('1d100');
-    const result = EventFocusEpic.roll(dice.sum);
-    this.addToLog(result.value, "Epic", dice.sum, result.notes);
+    const result = EventFocusEpic.roll();
+    this.addToLog(result.value, "Epic", result.notes);
   }
-  addToLog(value: string, check: string, dice: number, notes: string) {
-    this.dataService.data.log.add(value, `[Event Check: ${check}] D: ${dice}\u000d\u000d${notes}`);
+  addToLog(value: string, check: string, notes: string) {
+    this.dataService.data.log.add(value, `[Event Check: ${check}] ${notes}`);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from './services/data.service';
+import { StorageService } from './services/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   title = 'mangy';
 
   constructor(
-    public dataService: DataService
+    public dataService: StorageService
   ) { }
 
   ngOnInit() { }

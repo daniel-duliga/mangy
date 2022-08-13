@@ -1,3 +1,6 @@
+import { DiceUtil } from "../dice/dice-util";
+import { RangeTable } from "./range-table";
+
 export class ListTable {
     constructor(
         private _rows: ListTableRow[]
@@ -9,8 +12,9 @@ export class ListTable {
     }
     
 
-    roll(dice: number): ListTableRow {
-        return this._rows[dice - 1];
+    roll(): ListTableRow {
+        const diceRoll = DiceUtil.rollDice(`1d${this._rows.length}`).sum;
+        return this._rows[diceRoll - 1];
     }
 }
 
@@ -18,5 +22,6 @@ export class ListTableRow {
     constructor(
         public value: string,
         public notes: string = '',
+        public innerTable: RangeTable | null = null,
     ) {}
 }

@@ -19,6 +19,7 @@ import { ConjectureComponent } from './components/conjecture/conjecture.componen
 import { NpcCreatorComponent } from './components/conjecture/npc-creator/npc-creator.component';
 import { NpcInteractionEmulatorComponent } from './components/conjecture/npc-interaction-emulator/npc-interaction-emulator.component';
 import { WfrpComponent } from './components/wfrp/wfrp.component';
+import { WaylaysGeneratorComponent } from './components/conjecture/waylays-generator/waylays-generator.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { WfrpComponent } from './components/wfrp/wfrp.component';
     NpcCreatorComponent,
     NpcInteractionEmulatorComponent,
     WfrpComponent,
+    WaylaysGeneratorComponent,
   ],
   imports: [
     BrowserModule,

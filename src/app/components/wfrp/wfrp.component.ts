@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
 import { ListTable, ListTableRow } from 'src/app/features/tables/list-table';
 import { RangeTable, RangeTableRow } from 'src/app/features/tables/range-table';
-import { DataService } from 'src/app/services/data.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-wfrp',
@@ -15,7 +15,7 @@ export class WfrpComponent implements OnInit {
   status: 'commoner' | 'noble' = 'commoner';
 
   constructor(
-    private dataService: DataService
+    private dataService: StorageService
   ) { }
 
   ngOnInit(): void { }
@@ -29,8 +29,8 @@ export class WfrpComponent implements OnInit {
       this.rollElfName();
     } else if (this.race === 'halfling') {
       if (this.gender === 'male') {
-        const forename = tables.names.human.forenames.male.roll(DiceUtil.rollDice('1d1000').sum).value;
-        const surname = tables.names.human.forenames.male.roll(DiceUtil.rollDice('1d1000').sum).value;
+        const forename = tables.names.human.forenames.male.roll().value;
+        const surname = tables.names.human.forenames.male.roll().value;
         this.dataService.data.log.add(`${forename} ${surname}`);
       }
     }
@@ -38,40 +38,38 @@ export class WfrpComponent implements OnInit {
 
   private rollHumanName() {
     let forename = '';
-    const forenameDice = DiceUtil.rollDice('1d1000').sum;
     if (this.gender === 'male') {
-      forename = tables.names.human.forenames.male.roll(forenameDice).value;
+      forename = tables.names.human.forenames.male.roll().value;
     } else {
-      forename = tables.names.human.forenames.female.roll(forenameDice).value;
+      forename = tables.names.human.forenames.female.roll().value;
     }
 
     let surname = '';
     const surnameTypeDice = DiceUtil.rollDice('1d4').sum;
     if (surnameTypeDice === 1) {
       // Settlement
-      let settlementRoll = tables.settlements.human.insideEmpire.roll(DiceUtil.rollDice('1d100').sum);
+      let settlementRoll = tables.settlements.human.insideEmpire.roll();
       if (settlementRoll.value === 'Outside the Empire') {
-        settlementRoll = tables.settlements.human.outsideEmpire.roll(DiceUtil.rollDice('1d100').sum);
+        settlementRoll = tables.settlements.human.outsideEmpire.roll();
         if (settlementRoll.innerTable !== null) {
-          settlementRoll = settlementRoll.innerTable.roll(DiceUtil.rollDice('1d100').sum);
+          settlementRoll = settlementRoll.innerTable.roll();
         }
       }
       surname = settlementRoll.value;
     } else if (surnameTypeDice === 2) {
       // Occupation
-      surname = tables.names.human.professions.roll(DiceUtil.rollDice('1d23').sum).value;
+      surname = tables.names.human.professions.roll().value;
     } else if (surnameTypeDice === 3) {
       // Nickname
-      surname = tables.names.human.nicknames.roll(DiceUtil.rollDice('1d16').sum).value;
+      surname = tables.names.human.nicknames.roll().value;
     } else {
       // Parent or ancestor
-      const ancestorDice = DiceUtil.rollDice('1d1000').sum;
       let ancestor = '';
       if (this.gender === 'male') {
-        ancestor = tables.names.human.forenames.male.roll(ancestorDice).value;
+        ancestor = tables.names.human.forenames.male.roll().value;
         surname = `${ancestor}son`;
       } else {
-        ancestor = tables.names.human.forenames.female.roll(ancestorDice).value;
+        ancestor = tables.names.human.forenames.female.roll().value;
         surname = `${ancestor}dottir`;
       }
     }
@@ -84,15 +82,13 @@ export class WfrpComponent implements OnInit {
   }
   
   private rollDwarfName() {
-    const surnameDice = DiceUtil.rollDice('1d1000').sum;
-    const ancestorDice = DiceUtil.rollDice('1d1000').sum;
     if (this.gender === 'male') {
-      const surname = tables.names.dwarf.forenames.male.roll(surnameDice).value;
-      const ancestor = tables.names.dwarf.forenames.male.roll(ancestorDice).value;
+      const surname = tables.names.dwarf.forenames.male.roll().value;
+      const ancestor = tables.names.dwarf.forenames.male.roll().value;
       this.dataService.data.log.add(`${surname} ${ancestor}son`);
     } else {
-      const surname = tables.names.dwarf.forenames.female.roll(surnameDice).value;
-      const ancestor = tables.names.dwarf.forenames.female.roll(ancestorDice).value;
+      const surname = tables.names.dwarf.forenames.female.roll().value;
+      const ancestor = tables.names.dwarf.forenames.female.roll().value;
       this.dataService.data.log.add(`${surname} ${ancestor}dottir`);
     }
   }
@@ -101,8 +97,8 @@ export class WfrpComponent implements OnInit {
     const numberOfNames = DiceUtil.rollDice('1d3').sum;
     let name = '';
     for (let index = 0; index < numberOfNames; index++) {
-      const prefix = tables.names.elf.prefix.roll(DiceUtil.rollDice('1d100').sum).value;
-      const suffix = tables.names.elf.suffix.roll(DiceUtil.rollDice('1d100').sum).value;
+      const prefix = tables.names.elf.prefix.roll().value;
+      const suffix = tables.names.elf.suffix.roll().value;
       name = `${name} ${prefix}${suffix}`;
     }
     name.trimStart();
@@ -110,14 +106,14 @@ export class WfrpComponent implements OnInit {
   }
 
   rollHumanSettlement() {
-    let settlement1 = tables.settlements.human.insideEmpire.roll(DiceUtil.rollDice('1d100').sum);
+    let settlement1 = tables.settlements.human.insideEmpire.roll();
 
     if (settlement1.value === 'Outside the Empire') {
-      settlement1 = tables.settlements.human.outsideEmpire.roll(DiceUtil.rollDice('1d100').sum);
+      settlement1 = tables.settlements.human.outsideEmpire.roll();
     }
 
     if (settlement1.innerTable !== null) {
-      const settlement2 = settlement1.innerTable.roll(DiceUtil.rollDice('1d100').sum);
+      const settlement2 = settlement1.innerTable.roll();
       this.dataService.data.log.add(`${settlement2.value} in ${settlement1.value}`);
     } else {
       this.dataService.data.log.add(settlement1.value);

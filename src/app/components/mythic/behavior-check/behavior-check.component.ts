@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
-import { DiceWrapper } from 'src/app/features/dice/dice-wrapper';
 import { RangeTable, RangeTableRow } from 'src/app/features/tables/range-table';
 import { Descriptor, MythicNpcModel } from 'src/app/models/data/mythic/mythic-npc-model';
-import { DataService } from 'src/app/services/data.service';
+import { StorageService } from 'src/app/services/storage.service';
 import MeaningTables from '../meaning-tables';
 
 @Component({
@@ -24,7 +23,7 @@ export class BehaviorCheckComponent implements OnInit {
   dispositionDescriptorExplanation: string = '';
 
   constructor(
-    public dataService: DataService
+    public dataService: StorageService
   ) { }
 
   ngOnInit(): void {
@@ -122,10 +121,10 @@ export class BehaviorCheckComponent implements OnInit {
   rollDescriptor(descriptor: DescriptorType) {
     if (!this.selectedNpc) { return; }
 
-    const action1 = MeaningTables.Verb.roll(DiceUtil.rollDice('1d100').sum);
-    const action2 = MeaningTables.Noun.roll(DiceUtil.rollDice('1d100').sum);
-    const descriptor1 = MeaningTables.Adverb.roll(DiceUtil.rollDice('1d100').sum);
-    const descriptor2 = MeaningTables.Adjective.roll(DiceUtil.rollDice('1d100').sum);
+    const action1 = MeaningTables.Verb.roll();
+    const action2 = MeaningTables.Noun.roll();
+    const descriptor1 = MeaningTables.Adverb.roll();
+    const descriptor2 = MeaningTables.Adjective.roll();
 
     switch (descriptor) {
       case 'activity1': {

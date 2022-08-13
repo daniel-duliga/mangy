@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
-import { DataService } from 'src/app/services/data.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-log',
@@ -15,7 +15,7 @@ export class LogComponent implements OnInit, OnDestroy, AfterViewInit {
   subscriptions: Subscription[] = [];
 
   constructor(
-    public dataService: DataService
+    public dataService: StorageService
   ) { }
 
   ngOnInit(): void {

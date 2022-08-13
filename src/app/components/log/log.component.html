@@ -1,14 +1,17 @@
 <div style="display: flex; justify-content: space-between;">
-    <h5>Log</h5>
+    <h4>Log</h4>
     <div>
         <button class="btn btn-outline-danger btn-sm" (click)="dataService.data.log.clear()">Clear</button>
     </div>
 </div>
+<hr>
 <div class="log-content" #logContent>
     <div *ngFor="let logEntry of dataService.data.log.getData()" [title]="logEntry.hint">
         <span class="timestamp">{{logEntry.timestamp | date:'YY-MM-dd HH:mm:ss'}}</span>
         &nbsp;
-        {{logEntry.value}}
+        <div *ngFor="let line of logEntry.lines">
+            {{line}}
+        </div>
         <hr>
     </div>
 </div>

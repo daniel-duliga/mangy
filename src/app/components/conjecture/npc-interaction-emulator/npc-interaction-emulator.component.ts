@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
 import { ListTable, ListTableRow } from 'src/app/features/tables/list-table';
 import { RangeTable, RangeTableRow } from 'src/app/features/tables/range-table';
-import { DataService } from 'src/app/services/data.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-npc-interaction-emulator',
@@ -33,41 +33,41 @@ export class NpcInteractionEmulatorComponent implements OnInit {
   ]);
 
   constructor(
-    private dataService: DataService,
+    private dataService: StorageService,
   ) { }
 
   ngOnInit(): void { }
 
   rollRelationship() {
-    this.relationship = this.npcRelationship.roll(DiceUtil.rollDice('1d7').sum).value;
+    this.relationship = this.npcRelationship.roll().value;
   }
 
   rollBearing() {
-    this.bearing = this.npcBearing.roll(DiceUtil.rollDice('1d100').sum).value;
+    this.bearing = this.npcBearing.roll().value;
   }
 
   rollConversationMood() {
     let message = '';
     if (this.relationship === 'Loved') {
-      const mood = npcConversationMood_Loved.roll(DiceUtil.rollDice('1d100').sum);
+      const mood = npcConversationMood_Loved.roll();
       message = `The NPC, who usually loves the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Friendly') {
-      const mood = npcConversationMood_Friendly.roll(DiceUtil.rollDice('1d100').sum);
+      const mood = npcConversationMood_Friendly.roll();
       message = `The NPC, who is usually friendly with the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Peaceful') {
-      const mood = npcConversationMood_Peaceful.roll(DiceUtil.rollDice('1d100').sum);
+      const mood = npcConversationMood_Peaceful.roll();
       message = `The NPC, who is usually peaceful towards the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Neutral') {
-      const mood = npcConversationMood_Neutral.roll(DiceUtil.rollDice('1d100').sum);
+      const mood = npcConversationMood_Neutral.roll();
       message = `The NPC, who is usually neutral towards the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Distrustful') {
-      const mood = npcConversationMood_Distrustful.roll(DiceUtil.rollDice('1d100').sum);
+      const mood = npcConversationMood_Distrustful.roll();
       message = `The NPC, who is usually distrustful of the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Hostile') {
-      const mood = npcConversationMood_Hostile.roll(DiceUtil.rollDice('1d100').sum);
+      const mood = npcConversationMood_Hostile.roll();
       message = `The NPC, who is usually hostile towards the party, is ${mood.value} right now.`;
     } else if (this.relationship === 'Hated') {
-      const mood = npcConversationMood_Hated.roll(DiceUtil.rollDice('1d100').sum);
+      const mood = npcConversationMood_Hated.roll();
       message = `The NPC, who usually hates the party, is ${mood.value} right now.`;
     }
     this.dataService.data.log.add(message);

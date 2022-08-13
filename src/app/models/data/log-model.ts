@@ -32,4 +32,10 @@ export class LogEntry {
         public hint: string,
         public timestamp: Date = new Date(),
     ) { }
+
+    
+    public get lines() : string[] {
+        return this.value.split('\n');
+    }
+    
 }

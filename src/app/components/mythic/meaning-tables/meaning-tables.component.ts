@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
-import { DataService } from 'src/app/services/data.service';
+import { StorageService } from 'src/app/services/storage.service';
 import { ListTable, ListTableRow } from 'src/app/features/tables/list-table';
 import MeaningTables from '../meaning-tables';
 
@@ -11,45 +11,37 @@ import MeaningTables from '../meaning-tables';
 })
 export class MeaningTablesComponent implements OnInit {
   constructor(
-    private dataService: DataService
+    private dataService: StorageService
   ) { }
 
   ngOnInit(): void { }
 
   descriptor1() {
-    const die = DiceUtil.rollDice('1d100');
-    this.dataService.data.log.add(MeaningTables.Adverb.roll(die.sum).value, `[Adverb] D: ${die.details}`);
+    this.dataService.data.log.add(MeaningTables.Adverb.roll().value);
   }
   descriptor2() {
     const die = DiceUtil.rollDice('1d100');
-    this.dataService.data.log.add(MeaningTables.Adjective.roll(die.sum).value, `[Verb] D: ${die.details}`);
+    this.dataService.data.log.add(MeaningTables.Adjective.roll().value);
   }
   descriptor1plus2() {
-    const dice1 = DiceUtil.rollDice('1d100');
-    const d1 = MeaningTables.Adverb.roll(dice1.sum);
+    const d1 = MeaningTables.Adverb.roll();
+    const a1 = MeaningTables.Verb.roll();
     
-    const dice2 = DiceUtil.rollDice('1d100');
-    const a1 = MeaningTables.Verb.roll(dice2.sum);
-    
-    this.dataService.data.log.add(`${d1.value} ${a1.value}`, `[Adverb + Verb] D: ${dice1.details}, ${dice2.details}`);
+    this.dataService.data.log.add(`${d1.value} ${a1.value}`);
   }
 
   action1() {
-    const die = DiceUtil.rollDice('1d100');
-    this.dataService.data.log.add(MeaningTables.Verb.roll(die.sum).value, `[Adjective] D: ${die.details}`);
+    this.dataService.data.log.add(MeaningTables.Verb.roll().value);
 
   }
   action2() {
     const die = DiceUtil.rollDice('1d100');
-    this.dataService.data.log.add(MeaningTables.Noun.roll(die.sum).value, `[Noun] D: ${die.details}`);
+    this.dataService.data.log.add(MeaningTables.Noun.roll().value);
   }
   action1plus2() {
-    const dice1 = DiceUtil.rollDice('1d100');
-    const d2 = MeaningTables.Adjective.roll(dice1.sum);
+    const d2 = MeaningTables.Adjective.roll();
+    const a2 = MeaningTables.Noun.roll();
     
-    const dice2 = DiceUtil.rollDice('1d100');
-    const a2 = MeaningTables.Noun.roll(dice2.sum);
-    
-    this.dataService.data.log.add(`${d2.value} ${a2.value}`, `[Adjective + Noun] D: ${dice1.details}, ${dice2.details}`);
+    this.dataService.data.log.add(`${d2.value} ${a2.value}`);
   }
 }
