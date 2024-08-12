@@ -1,9 +1,16 @@
 <div class="main-container">
-  <div class="actions">
-    <app-mythic></app-mythic>
-    <app-conjecture></app-conjecture>
-    <app-wfrp></app-wfrp>
-  </div>
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="tabIsActive('mythic')" aria-current="page" [routerLink]="'mythic'">Mythic</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="tabIsActive('conjecture')" [routerLink]="'conjecture'">Conjecture</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [class.active]="tabIsActive('wfrp')" [routerLink]="'wfrp'">WFRP</a>
+    </li>
+  </ul>
+  <router-outlet></router-outlet>
   <div class="log">
     <app-log></app-log>
   </div>

@@ -1,4 +1,3 @@
-<h4 style="margin-left: 15px;">Mythic</h4>
 <div class="mythic-container">
     <div style="min-width: 275px;">
         <app-chaos-factor></app-chaos-factor>
@@ -6,7 +5,7 @@
         <app-detail-check></app-detail-check>
         <app-event-check></app-event-check>
     </div>
-    <div style="min-width: 300px;">
+    <div>
         <app-list
             [title]="'PCs'"
             [items]="dataService.data.mythic.pcs"
@@ -23,8 +22,10 @@
             (onItemsChanged)="dataService.data.mythic.threads = $event"
         ></app-list>
     </div>
-    <div style="min-width: 600px;">
+    <div>
         <app-meaning-tables></app-meaning-tables>
+    </div>
+    <div>
         <app-behavior-check></app-behavior-check>
     </div>
 </div>

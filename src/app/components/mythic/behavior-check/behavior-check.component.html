@@ -1,7 +1,6 @@
 <div class="section descriptors">
     <h5 style="text-align: center;">Behavior Check</h5>
-    <br>
-    
+
     <!-- NPC select -->
     <div style="display: flex;">
         <select [(ngModel)]="selectedNpcId" (ngModelChange)="selectedNpcChanged($event)" style="width: 100%;">
@@ -12,9 +11,9 @@
     <br>
 
     <!-- Disposition & Action -->
-    <div style="display: flex; justify-content: center;">
-        <div style="display: flex; align-items: center;">
-            <!-- Value & Modifier buttons -->
+    <div style="display: flex; flex-direction: column;">
+        <!-- Value & Modifier buttons -->
+        <div style="display: flex; justify-content: center; align-items: center; font-size: small;">
             <span>Disposition:</span>
             &nbsp;
             &nbsp;
@@ -25,74 +24,55 @@
                 &nbsp;
             </div>
             <button class="btn btn-outline-secondary btn-sm" (click)="changeDisposition(2)">+2</button>
-            
+
             <!-- Roll -->
             &nbsp;
             &nbsp;
             <button class="btn btn-outline-success btn-sm" (click)="rollDisposition()">Roll</button>
             &nbsp;
-            <span [title]="dispositionDescriptorExplanation">= {{dispositionDescriptor}}</span>
-            
-            <!-- NPC Action -->
-            &nbsp;
-            &nbsp;
-            <button class="btn btn-outline-primary btn-sm" (click)="npcAction()">NPC Action</button>
-        </div>
+            <div [title]="dispositionDescriptorExplanation">= {{dispositionDescriptor}}</div>
+        </div>        
     </div>
 
     <br>
-    
+
     <!-- Descriptors -->
-    
-    <p style="text-align: center;"><i><b>Identity</b></i></p>
+
+    <span style="text-align: center;"><i><b>Identity</b></i></span>
     <ul class="list-group">
-        <app-descriptor
-            [name]="'Primary Identity'"
-            [descriptor]="this.selectedNpc.identity1"
+        <app-descriptor [name]="'Primary Identity'" [descriptor]="this.selectedNpc.identity1"
             (onDescriptorUpdated)="descriptorUpdated('identity1', $event)"
-            (onDescriptorRolled)="rollDescriptor('identity1')"
-        ></app-descriptor>
-        <app-descriptor
-            [name]="'Secondary Identity'"
-            [descriptor]="this.selectedNpc.identity2"
+            (onDescriptorRolled)="rollDescriptor('identity1')"></app-descriptor>
+        <app-descriptor [name]="'Secondary Identity'" [descriptor]="this.selectedNpc.identity2"
             (onDescriptorUpdated)="descriptorUpdated('identity2', $event)"
-            (onDescriptorRolled)="rollDescriptor('identity2')"
-        ></app-descriptor>
+            (onDescriptorRolled)="rollDescriptor('identity2')"></app-descriptor>
     </ul>
-    
+
     <br>
-    
-    <p style="text-align: center;"><i><b>Personality</b></i></p>
+
+    <span style="text-align: center;"><i><b>Personality</b></i></span>
     <ul class="list-group">
-        <app-descriptor
-            [name]="'Primary Personality'"
-            [descriptor]="this.selectedNpc.personality1"
+        <app-descriptor [name]="'Primary Personality'" [descriptor]="this.selectedNpc.personality1"
             (onDescriptorUpdated)="descriptorUpdated('personality1', $event)"
-            (onDescriptorRolled)="rollDescriptor('personality1')"
-        ></app-descriptor>
-        <app-descriptor
-            [name]="'Secondary Personality'"
-            [descriptor]="this.selectedNpc.personality2"
+            (onDescriptorRolled)="rollDescriptor('personality1')"></app-descriptor>
+        <app-descriptor [name]="'Secondary Personality'" [descriptor]="this.selectedNpc.personality2"
             (onDescriptorUpdated)="descriptorUpdated('personality2', $event)"
-            (onDescriptorRolled)="rollDescriptor('personality2')"
-        ></app-descriptor>
+            (onDescriptorRolled)="rollDescriptor('personality2')"></app-descriptor>
     </ul>
 
     <br>
 
-    <p style="text-align: center;"><i><b>Activity</b></i></p>
+    <span style="text-align: center;"><i><b>Activity</b></i></span>
     <ul class="list-group">
-        <app-descriptor
-            [name]="'Primary Activity'"
-            [descriptor]="this.selectedNpc.activity1"
+        <app-descriptor [name]="'Primary Activity'" [descriptor]="this.selectedNpc.activity1"
             (onDescriptorUpdated)="descriptorUpdated('activity1', $event)"
-            (onDescriptorRolled)="rollDescriptor('activity1')"
-        ></app-descriptor>
-        <app-descriptor
-            [name]="'Secondary Activity'"
-            [descriptor]="this.selectedNpc.activity2"
+            (onDescriptorRolled)="rollDescriptor('activity1')"></app-descriptor>
+        <app-descriptor [name]="'Secondary Activity'" [descriptor]="this.selectedNpc.activity2"
             (onDescriptorUpdated)="descriptorUpdated('activity2', $event)"
-            (onDescriptorRolled)="rollDescriptor('activity2')"
-        ></app-descriptor>
+            (onDescriptorRolled)="rollDescriptor('activity2')"></app-descriptor>
     </ul>
+
+    <!-- NPC Action -->
+    <br>
+    <button class="btn btn-outline-primary btn-sm" (click)="npcAction()">NPC Action</button>
 </div>

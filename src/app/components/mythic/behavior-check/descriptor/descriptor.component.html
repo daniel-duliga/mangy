@@ -1,5 +1,5 @@
 <li class="list-group-item">
-    <div style="display: grid; grid-template-columns: 1fr 8fr 2fr 8fr; align-items: center; column-gap: 15px;">
+    <div style="display: grid; grid-template-columns: 1fr 8fr 2fr; align-items: center; column-gap: 15px;">
         
         <!-- Active -->
         <input
@@ -23,38 +23,37 @@
         
         <!-- Roll value -->
         <button class="btn btn-outline-success btn-sm" (click)="roll()">Roll</button>
-        
-        <!-- Modifiers -->
-        <div class="modifier btn-group" title="Modifiers" role="group">
-            <input
-                class="btn-check btn-sm"
-                type="radio"
-                [name]="'lowers_' + name.replace(' ', '')"
-                [id]="'lowers_' + name.replace(' ', '')"
-                [(ngModel)]="descriptor.modifier"
-                value="lowers"
-                (change)="npcUpdated()">
-            <label class="btn btn-outline-primary btn-sm" [for]="'lowers_' + name.replace(' ', '')">Lowers</label>
-        
-            <input
-                class="btn-check btn-sm"
-                type="radio"
-                [name]="'neutral_' + name.replace(' ', '')"
-                [id]="'neutral_' + name.replace(' ', '')"
-                [(ngModel)]="descriptor.modifier"
-                value="neutral"
-                (change)="npcUpdated()">
-            <label class="btn btn-outline-secondary btn-sm" [for]="'neutral_' + name.replace(' ', '')">Neutral</label>
-        
-            <input
-                class="btn-check btn-sm"
-                type="radio"
-                [name]="'intensifies_' + name.replace(' ', '')"
-                [id]="'intensifies_' + name.replace(' ', '')"
-                [(ngModel)]="descriptor.modifier"
-                value="intensifies"
-                (change)="npcUpdated()">
-            <label class="btn btn-outline-danger btn-sm" [for]="'intensifies_' + name.replace(' ', '')">Intensifies</label>
-        </div>
+    </div>
+    <!-- Modifiers -->
+    <div class="modifier btn-group" title="Modifiers" role="group" style="margin: 0 84px 0 51px;">
+        <input
+            class="btn-check btn-sm"
+            type="radio"
+            [name]="'lowers_' + name.replace(' ', '')"
+            [id]="'lowers_' + name.replace(' ', '')"
+            [(ngModel)]="descriptor.modifier"
+            value="lowers"
+            (change)="npcUpdated()">
+        <label class="btn btn-outline-primary btn-sm" [for]="'lowers_' + name.replace(' ', '')">Lowers</label>
+    
+        <input
+            class="btn-check btn-sm"
+            type="radio"
+            [name]="'neutral_' + name.replace(' ', '')"
+            [id]="'neutral_' + name.replace(' ', '')"
+            [(ngModel)]="descriptor.modifier"
+            value="neutral"
+            (change)="npcUpdated()">
+        <label class="btn btn-outline-secondary btn-sm" [for]="'neutral_' + name.replace(' ', '')">Neutral</label>
+    
+        <input
+            class="btn-check btn-sm"
+            type="radio"
+            [name]="'intensifies_' + name.replace(' ', '')"
+            [id]="'intensifies_' + name.replace(' ', '')"
+            [(ngModel)]="descriptor.modifier"
+            value="intensifies"
+            (change)="npcUpdated()">
+        <label class="btn btn-outline-danger btn-sm" [for]="'intensifies_' + name.replace(' ', '')">Intensifies</label>
     </div>
 </li>
