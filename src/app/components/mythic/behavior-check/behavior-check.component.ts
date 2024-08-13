@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
 import { RangeTable, RangeTableRow } from 'src/app/features/tables/range-table';
 import { Descriptor, MythicNpcModel } from 'src/app/models/data/mythic/mythic-npc-model';
-import { StorageService } from 'src/app/services/storage.service';
+import { DataService } from 'src/app/services/data.service';
 import MeaningTables from '../meaning-tables';
 
 @Component({
@@ -23,7 +23,7 @@ export class BehaviorCheckComponent implements OnInit {
   dispositionDescriptorExplanation: string = '';
 
   constructor(
-    public dataService: StorageService
+    public dataService: DataService
   ) { }
 
   ngOnInit(): void {

@@ -17,7 +17,8 @@ export class AppModel {
                 result.mythic._chaosFactor,
                 result.mythic._pcs,
                 result.mythic._npcs,
-                result.mythic._threads
+                result.mythic._threads,
+                result.mythic._adventureCrafterThemes
             );
         } else {
             this.log = new LogModel(this);
@@ -29,7 +30,7 @@ export class AppModel {
         localStorage.setItem(AppModel.key, JSON.stringify(this, replacer));
 
         function replacer(key: string, value: any): any {
-            if (key === '_parent' || key === 'onChanged') {
+            if (key === '_appModel' || key === 'onChanged') {
                 return null;
             } else {
                 return value;

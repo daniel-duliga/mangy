@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
 import { ListTable, ListTableRow } from 'src/app/features/tables/list-table';
 import { RangeTable, RangeTableRow } from 'src/app/features/tables/range-table';
-import { StorageService } from 'src/app/services/storage.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-waylays-generator',
@@ -11,20 +11,20 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class WaylaysGeneratorComponent implements OnInit {
   constructor(
-    private storageService: StorageService
+    private dataService: DataService
   ) { }
 
   ngOnInit(): void { }
 
   generateWaylay() {
-    this.storageService.data.log.add(this.rollWaylay());
+    this.dataService.data.log.add(this.rollWaylay());
   }
 
   generateCharacterHistory() {
     const definingMoment1 = this.rollWaylay();
     const definingMoment2 = this.rollWaylay();
     const definingMoment3 = this.rollWaylay();
-    this.storageService.data.log.add(`
+    this.dataService.data.log.add(`
       1. Early age: ${definingMoment1}\n
       2. During the teenage years: ${definingMoment2}\n
       3. Recently: ${definingMoment3}\n

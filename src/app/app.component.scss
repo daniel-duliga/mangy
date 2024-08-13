@@ -1,7 +1,7 @@
 .main-container {
   margin: 20px;
   display: grid;
-  grid-template-columns: 4fr 1fr;
+  grid-template-columns: 3fr 1fr;
 }
 .actions {
   display: flex;
@@ -9,6 +9,7 @@
 }
 .log {
   padding-left: 20px;
+  margin-left: 20px;
   border-left: 1px solid lightgray;
   position: relative;
   top: -40px;

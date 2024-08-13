@@ -1,14 +1,7 @@
-label {
-    font-size: 10pt;
-}
 .descriptor {
     display: grid;
     grid-template-columns: auto 1fr auto auto auto auto auto auto;
     align-items: center;
-
-    input[type=text] {
-        width: 200px;
-    }
 }
 .modifier {
     display: flex;

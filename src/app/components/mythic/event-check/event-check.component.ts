@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DiceUtil } from 'src/app/features/dice/dice-util';
-import { StorageService } from 'src/app/services/storage.service';
+import { DataService } from 'src/app/services/data.service';
 import { 
   EventFocusActionAdventure, 
   EventFocusEpic, 
@@ -18,7 +17,7 @@ import {
 })
 export class EventCheckComponent implements OnInit {
   constructor(
-    private dataService: StorageService
+    private dataService: DataService
   ) { }
 
   ngOnInit(): void { }

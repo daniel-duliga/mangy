@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
-import { StorageService } from 'src/app/services/storage.service';
+import { DataService } from 'src/app/services/data.service';
 import { v4 as uuid } from 'uuid';
 import ListItem from '../../../models/list-item';
 
@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
   selectedItemIds: string[] = [];
 
   constructor(
-    public dataService: StorageService
+    public dataService: DataService
   ) { }
 
   ngOnInit(): void { }

@@ -1,9 +1,13 @@
 <div class="mythic-container">
-    <div style="min-width: 275px;">
+    <div>
+        <app-adventure-crafter></app-adventure-crafter>
         <app-chaos-factor></app-chaos-factor>
+    </div>
+    <div>
         <app-fate-check></app-fate-check>
         <app-detail-check></app-detail-check>
         <app-event-check></app-event-check>
+        <app-meaning-tables></app-meaning-tables>
     </div>
     <div>
         <app-list
@@ -21,9 +25,6 @@
             [items]="dataService.data.mythic.threads"
             (onItemsChanged)="dataService.data.mythic.threads = $event"
         ></app-list>
-    </div>
-    <div>
-        <app-meaning-tables></app-meaning-tables>
     </div>
     <div>
         <app-behavior-check></app-behavior-check>

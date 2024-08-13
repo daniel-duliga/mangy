@@ -1,0 +1,15 @@
+<div class="section">
+    <h5 style="text-align: center;">Adventure Crafter</h5>
+    <div style="display: flex; flex-direction: column;">
+        <div style="display: flex; flex-direction: column; align-items: center;;">
+            <button class="btn btn-outline-secondary btn-sm" (click)="rollThemes()">Roll Themes</button>
+            <br>
+            <span><b><i>Themes</i></b></span>
+            <span *ngFor="let theme of themes.rows; let i = index">{{i + 1}}. {{theme.value}}</span>
+            <br>
+            <button class="btn btn-outline-primary btn-sm" style="height: 50px;" (click)="rollTurningPoint()">
+                Roll Turning Point
+            </button>
+        </div>
+    </div>
+</div>

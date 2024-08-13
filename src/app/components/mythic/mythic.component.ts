@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MythicNpcModel } from 'src/app/models/data/mythic/mythic-npc-model';
 import ListItem from 'src/app/models/list-item';
-import { StorageService } from 'src/app/services/storage.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-mythic',
@@ -12,7 +12,7 @@ export class MythicComponent implements OnInit {
   selectedNpc: MythicNpcModel  = new MythicNpcModel('', '');
 
   constructor(
-    public dataService: StorageService
+    public dataService: DataService
   ) { }
 
   ngOnInit(): void { }

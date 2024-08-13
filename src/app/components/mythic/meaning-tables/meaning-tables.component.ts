@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
-import { StorageService } from 'src/app/services/storage.service';
-import { ListTable, ListTableRow } from 'src/app/features/tables/list-table';
+import { DataService } from 'src/app/services/data.service';
 import MeaningTables from '../meaning-tables';
 
 @Component({
@@ -11,7 +10,7 @@ import MeaningTables from '../meaning-tables';
 })
 export class MeaningTablesComponent implements OnInit {
   constructor(
-    private dataService: StorageService
+    private dataService: DataService
   ) { }
 
   ngOnInit(): void { }

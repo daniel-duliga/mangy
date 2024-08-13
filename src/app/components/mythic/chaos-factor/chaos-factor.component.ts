@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
-import { StorageService } from 'src/app/services/storage.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-chaos-factor',
@@ -9,7 +9,7 @@ import { StorageService } from 'src/app/services/storage.service';
 })
 export class ChaosFactorComponent implements OnInit {
   constructor(
-    public dataService: StorageService
+    public dataService: DataService
   ) { }
 
   ngOnInit(): void { }

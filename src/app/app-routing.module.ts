@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
 import { MythicComponent } from './components/mythic/mythic.component';
 import { ConjectureComponent } from './components/conjecture/conjecture.component';
 import { WfrpComponent } from './components/wfrp/wfrp.component';

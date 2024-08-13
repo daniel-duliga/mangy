@@ -11,14 +11,15 @@ export class RangeTable {
     }
     
 
-    roll(dice: number | null = null): RangeTableRow {
+    public roll(dice: number | null = null): RangeTableRow {
         const lastRow = this._rows[this._rows.length - 1];
         const diceRoll = dice ?? DiceUtil.rollDice(`1d${lastRow.max}`).sum;
-        return this._rows.filter(
+        const result = this._rows.filter(
             x => 
                 x.min <= diceRoll && 
                 x.max >= diceRoll
         )[0];
+        return result;
     }
 }
 

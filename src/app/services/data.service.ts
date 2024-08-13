@@ -4,7 +4,7 @@ import { AppModel } from '../models/data/app-model';
 @Injectable({
   providedIn: 'root'
 })
-export class StorageService {
+export class DataService {
   public data: AppModel = new AppModel();
 
   constructor() { }

@@ -20,6 +20,7 @@ import { NpcCreatorComponent } from './components/conjecture/npc-creator/npc-cre
 import { NpcInteractionEmulatorComponent } from './components/conjecture/npc-interaction-emulator/npc-interaction-emulator.component';
 import { WfrpComponent } from './components/wfrp/wfrp.component';
 import { WaylaysGeneratorComponent } from './components/conjecture/waylays-generator/waylays-generator.component';
+import { AdventureCrafterComponent } from './components/mythic/adventure-crafter/adventure-crafter.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { WaylaysGeneratorComponent } from './components/conjecture/waylays-gener
     NpcInteractionEmulatorComponent,
     WfrpComponent,
     WaylaysGeneratorComponent,
+    AdventureCrafterComponent,
   ],
   imports: [
     BrowserModule,

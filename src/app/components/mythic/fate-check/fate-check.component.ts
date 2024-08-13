@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DiceUtil } from 'src/app/features/dice/dice-util';
-import { StorageService } from 'src/app/services/storage.service';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-fate-check',
@@ -11,7 +11,7 @@ export class FateCheckComponent implements OnInit {
   favors: 'yes' | 'no' = 'yes';
 
   constructor(
-    private dataService: StorageService
+    private dataService: DataService
   ) { }
 
   ngOnInit(): void { }

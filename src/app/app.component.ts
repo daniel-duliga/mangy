@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageService } from './services/storage.service';
+import { DataService } from './services/data.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'mangy';
 
   constructor(
-    public dataService: StorageService,
+    public dataService: DataService,
     public router: Router,
   ) { }
 
